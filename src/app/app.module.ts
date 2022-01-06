@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainGridComponent
+    MainGridComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
