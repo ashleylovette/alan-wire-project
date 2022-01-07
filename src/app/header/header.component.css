@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #2d3e50;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 3.5%;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.title {
+  white-space: nowrap;
+  color: ivory;
+  padding-left: 2.5%;
+}
+.right-icons {
+  display: flex;
+  flex-direction: row;
+  padding-right: 2.5%;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.right-icons:hover {
+  color: #0088a9;
+}

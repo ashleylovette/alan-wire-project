@@ -4,10 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 
+import { HeaderComponent } from './header/header.component';
+
+import { MainGridComponent } from './main-grid/main-grid.component';
+import { FooterComponent } from './footer/footer.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    MainGridComponent,
+    FooterComponent,
+    HeaderComponent
+
   ],
   imports: [
     BrowserModule
