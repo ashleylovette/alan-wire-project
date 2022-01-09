@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --aw-blue: #2d3e50;
+  --text-color: ivory;
+}
