@@ -1,16 +1,15 @@
 /* SIDEBAR BOX */
 .sidebar {
-  width: 25%;
+  width: 15%;
   height: 100%;
   background-color: lightgray;
   position: relative;
-
 }
 
 /* SIDEBAR CONTENT LINKS */
 .sidebar a {
   display: block;
-  width: 25vmin;
+  width: 15vmin; /* LOWERED TO 15 TO FIT COLUMN WITHOUT OVERLAP */
   height: 100vmin;
   padding-top: 50px;
   left: 0;
@@ -29,8 +28,8 @@
 .togglebtn {
   position: absolute;
   top: 0;
-  right: 25px;
-  margin-left: 50px;
+  /* right: 25px;
+  margin-left: 50px; */
   font-size: 20px;
   color: black;
   background-color: lightgray;
@@ -54,20 +53,36 @@
 
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
 }
 
 /* MOBILE FIRST STYLING */
 @media only screen and (min-width: 600px) {
   /* for tablets */
-  .col-1 {width: 25%;} /* left sidebar */
-  .col-2 {width: 50%;} /* main content */
-  .col-3 {width: 25%;} /* right sidebar */
+  .col-1 {
+    width: 25%;
+  } /* left sidebar */
+  .col-2 {
+    width: 50%;
+  } /* main content */
+  .col-3 {
+    width: 25%;
+  } /* right sidebar */
 }
 @media only screen and (min-width: 768px) {
   /* for desktops */
-  .col-1 {width: 25%;} /* left sidebar */
-  .col-2 {width: 50%;} /* main content */
-  .col-3 {width: 25%;} /* right sidebar */
+  .col-1 {
+    width: 25%;
+  } /* left sidebar */
+  .col-2 {
+    width: 50%;
+  } /* main content */
+  .col-3 {
+    width: 25%;
+  } /* right sidebar */
 }
