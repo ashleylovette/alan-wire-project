@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 
 import { MainGridComponent } from './main-grid/main-grid.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,10 @@ import { FooterComponent } from './footer/footer.component';
     LeftSidebarComponent,
     MainGridComponent,
     FooterComponent,
-    HeaderComponent
-
+    HeaderComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
