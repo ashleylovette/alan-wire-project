@@ -1,4 +1,4 @@
-div.container{
+.footer-container {
   background-color: #2d3e50;
   width: 100%;
   display: flex;
@@ -10,7 +10,7 @@ div.container{
   padding: 0;
 }
 
-p{
+p {
   padding-left: 0.75em;
   color: ivory;
 }

@@ -1,5 +1,32 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+} */
+
+.my-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin-left: 2.5%;
+}
+
+.center-col {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin-right: 2.5%;
 }
