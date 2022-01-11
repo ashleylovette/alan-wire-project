@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin: 0;
   margin-right: auto;
