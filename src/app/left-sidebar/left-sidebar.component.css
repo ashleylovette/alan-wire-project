@@ -1,26 +1,36 @@
-/* SIDEBAR BOX */
-.sidebar {
-  width: 15%;
-  height: 100%;
-  background-color: lightgray;
+
+/* ENTIRE SIDEBAR CONTAINER */
+.sidebar-container {
+  height: 100vh;
   position: relative;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+/* SIDEBAR CONTENT BOX */
+.content {
+
+  height: 100vh;
+  position: relative;
+  background-color: var(--text-color);
+  display: flex;
+  flex-direction: column;
 }
 
 /* SIDEBAR CONTENT LINKS */
-.sidebar a {
+.content a {
   display: block;
-  width: 15vmin; /* LOWERED TO 15 TO FIT COLUMN WITHOUT OVERLAP */
-  height: 100vmin;
-  padding-top: 50px;
   left: 0;
-  font-size: 18px;
-  color: black;
-  background-color: lightgray;
-  transition: 0.5s ease;
+  align-items: left;
+  font-size: 25px;
+  color: var(--aw-blue);
+  background-color: var(--text-color);
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
-.sidebar a:hover {
+.content a:hover {
   background-color: lightslategray;
 }
 
@@ -28,11 +38,10 @@
 .togglebtn {
   position: absolute;
   top: 0;
-  /* right: 25px;
-  margin-left: 50px; */
+  left: 0;
   font-size: 20px;
-  color: black;
-  background-color: lightgray;
+  color: var(--text-color);
+  background-color: var(--aw-blue);
   border: none;
   padding: 10px 15px;
   box-shadow: 0px 1px 4px 1px darkgray;
@@ -46,43 +55,28 @@
 }
 
 /* PUSH CONTENT OF MAIN PAGE TO RIGHT WHEN YOU OPEN LEFT SIDEBAR */
-.main {
-  transition: margin-left 0.5s ease;
+/* .container-grid {
+  transition: left-margin 1.0s ease-in-out;
   padding: 20px;
-}
+} */
 
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */
 @media screen and (max-height: 450px) {
-  .sidebar {
-    padding-top: 15px;
-  }
-  .sidebar a {
-    font-size: 18px;
-  }
+  .content {padding-top: 15px;}
+  .content a {font-size: 18px;}
 }
 
 /* MOBILE FIRST STYLING */
 @media only screen and (min-width: 600px) {
   /* for tablets */
-  .col-1 {
-    width: 25%;
-  } /* left sidebar */
-  .col-2 {
-    width: 50%;
-  } /* main content */
-  .col-3 {
-    width: 25%;
-  } /* right sidebar */
+
+  .col-1 {width: 15%;} /* left sidebar */
+  .col-2 {width: 70%;} /* main content */
+  .col-3 {width: 15%;} /* right sidebar */
 }
 @media only screen and (min-width: 768px) {
   /* for desktops */
-  .col-1 {
-    width: 25%;
-  } /* left sidebar */
-  .col-2 {
-    width: 50%;
-  } /* main content */
-  .col-3 {
-    width: 25%;
-  } /* right sidebar */
+  .col-1 {width: 15%;} /* left sidebar */
+  .col-2 {width: 70%;} /* main content */
+  .col-3 {width: 15%;} /* right sidebar */
 }
