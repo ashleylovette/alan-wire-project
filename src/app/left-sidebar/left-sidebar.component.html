@@ -1,20 +1,14 @@
 <!-- The sidebar -->
-<div class="row">
-  <div class="col-3">
-    <div class="sidebar">
-      <!-- OPEN BUTTON, MIN WIDTH, DISPLAYED -->
-      <button
-        class="togglebtn"
-        (click) = "toggleSidebar()">XXX
-      </button>
-      <!-- CONTENT LINKS, CLOSE BUTTON, CONTENT WIDTH, DISPLAYED WHEN OPEN -->
-      <div class="sidebar" >
-          <ul *ngIf="isOpen">
-            <a href="#">Option 1</a>
-            <a href="#">Option 2</a>
-            <a href="#">Option 3</a>
-          </ul>
-      </div>
-    </div>
+<div class="sidebar-container">
+  <!-- OPEN BUTTON, MIN WIDTH, DISPLAYED -->
+  <button
+    class="togglebtn"
+    (click) = "toggleSidebar()">XXX
+  </button>
+  <!-- CONTENT LINKS, CLOSE BUTTON, CONTENT WIDTH, DISPLAYED WHEN OPEN -->
+  <div class="content" *ngIf="isOpen">
+    <a href="#">Option 1</a>
+    <a href="#">Option 2</a>
+    <a href="#">Option 3</a>
   </div>
 </div>

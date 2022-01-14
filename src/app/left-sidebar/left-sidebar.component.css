@@ -5,12 +5,12 @@
   padding-top: 60px;
   display: flex;
   flex-direction: column;
+  background-color: var(--text-color);
   overflow-y: hidden;
 }
 
 /* SIDEBAR CONTENT BOX */
 .content {
-
   height: 100vh;
   position: relative;
   background-color: var(--text-color);
