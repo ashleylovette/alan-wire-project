@@ -7,9 +7,20 @@
   margin-bottom: 2rem;
 }
 
-.container-block {
-  display: grid;
+.dashboard-item {
+  display: flex;
   border: 2px solid black;
-  height: 15rem;
-  width: 15rem;
+  max-width: fit-content;
+}
+
+.small {
+  grid-column: span 1;
+}
+
+.medium {
+  grid-column: span 2;
+}
+
+.large {
+  grid-column: span 3;
 }
