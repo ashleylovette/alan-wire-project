@@ -1,0 +1,23 @@
+/* .item {
+  border-color: 1px solid black;
+} */
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--aw-blue);
+  align-items: center;
+}
+
+p {
+  margin-left: 1%;
+  font-size: large;
+  color: var(--text-color);
+}
+
+mat-icon {
+  margin-right: 1%;
+  margin-left: auto;
+  color: var(--text-color);
+}
