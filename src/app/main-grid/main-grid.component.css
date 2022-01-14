@@ -1,0 +1,35 @@
+.container-grid{
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  padding-block: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container-block {
+  display: grid;
+  border: 2px solid black;
+  height: 10rem;
+  width: 10rem;
+}
+
+.con-1 {
+  background-color: blue;
+}
+
+.con-2 {
+  background-color: green;
+}
+
+.con-3 {
+  background-color: red;
+}
+
+.con-4 {
+  background-color: yellow;
+}
+
+.con-5{
+  background-color: purple;
+}
