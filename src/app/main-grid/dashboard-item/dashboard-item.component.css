@@ -1,19 +1,23 @@
+/* .item {
+  border-color: 1px solid black;
+} */
+
 .head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: var(--aw-blue);
+  align-items: center;
 }
 
-h1 {
+p {
   margin-left: 1%;
+  font-size: large;
+  color: var(--text-color);
 }
 
-<<<<<<< Updated upstream
 mat-icon {
   margin-right: 1%;
-=======
-mat-icon{
-  margin-right: 1%
->>>>>>> Stashed changes
   margin-left: auto;
+  color: var(--text-color);
 }
