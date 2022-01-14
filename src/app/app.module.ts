@@ -10,6 +10,7 @@ import { MainGridComponent } from './main-grid/main-grid.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { DashboardItemComponent } from './main-grid/dashboard-item/dashboard-item.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     MainGridComponent,
     FooterComponent,
     HeaderComponent,
+    DashboardItemComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
