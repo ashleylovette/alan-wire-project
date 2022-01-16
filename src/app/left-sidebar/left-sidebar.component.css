@@ -1,35 +1,39 @@
 /* ENTIRE SIDEBAR CONTAINER */
 .sidebar-container {
   height: 100vh;
+  width: auto;
   position: relative;
-  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  background-color: var(--text-color);
+  background-color: transparent;
   overflow-y: hidden;
 }
 
 /* SIDEBAR CONTENT BOX */
-.content {
+.left-sidebar {
   height: 100vh;
+  width: auto;
+  margin-right: auto;
   position: relative;
   background-color: var(--text-color);
   display: flex;
   flex-direction: column;
+  transition: linear 1.0s ease-in-out;
 }
 
 /* SIDEBAR CONTENT LINKS */
-.content a {
+.left-sidebar a {
   display: block;
   left: 0;
   align-items: left;
   font-size: 25px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   color: var(--aw-blue);
   background-color: var(--text-color);
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
-.content a:hover {
+.left-sidebar a:hover {
   background-color: lightslategray;
 }
 
@@ -39,6 +43,7 @@
   top: 0;
   left: 0;
   font-size: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   color: var(--text-color);
   background-color: var(--aw-blue);
   border: none;
@@ -54,27 +59,27 @@
 }
 
 /* PUSH CONTENT OF MAIN PAGE TO RIGHT WHEN YOU OPEN LEFT SIDEBAR */
-/* .container-grid {
-  transition: left-margin 1.0s ease-in-out;
+.container-grid {
+  transition: linear 1.0s ease-in-out;
   padding: 20px;
-} */
+}
 
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */
 @media screen and (max-height: 450px) {
-  .content {padding-top: 15px;}
-  .content a {font-size: 18px;}
+  .left-sidebar {padding-top: 15px;}
+  .left-sidebar a {font-size: 18px;}
 }
 
 /* MOBILE FIRST STYLING */
-@media only screen and (min-width: 600px) {
-  /* for tablets */
-  .col-1 {width: 15%;} /* left sidebar */
-  .col-2 {width: 70%;} /* main content */
-  .col-3 {width: 15%;} /* right sidebar */
+/* @media only screen and (min-width: 600px) {
+  for tablets
+  .col-1 {width: 15%;} left sidebar
+  .col-2 {width: 70%;} main content
+  .col-3 {width: 15%;} right sidebar
 }
 @media only screen and (min-width: 768px) {
-  /* for desktops */
-  .col-1 {width: 15%;} /* left sidebar */
-  .col-2 {width: 70%;} /* main content */
-  .col-3 {width: 15%;} /* right sidebar */
-}
+  for desktops
+  .col-1 {width: 15%;} left sidebar
+  .col-2 {width: 70%;} main content
+  .col-3 {width: 15%;} right sidebar
+} */
