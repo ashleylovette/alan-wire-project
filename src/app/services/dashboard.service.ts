@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DashboardItem } from '../main-grid/dashboard-item.model';
+import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 
 @Injectable({
   providedIn: 'root',
