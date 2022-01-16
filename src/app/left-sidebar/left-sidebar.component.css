@@ -1,74 +1,47 @@
-/* ENTIRE SIDEBAR CONTAINER */
-.sidebar-container {
-  height: 100vh;
-  width: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  overflow-y: hidden;
-}
 
 /* SIDEBAR CONTENT BOX */
 .left-sidebar {
-  height: 100vh;
-  width: auto;
-  margin-right: auto;
-  position: relative;
-  background-color: var(--text-color);
   display: flex;
   flex-direction: column;
-  transition: linear 1.0s ease-in-out;
+  gap: 1rem;
+  min-height: 100vh;
+  padding-top: 1em;
+  width: 100%;
+  margin: 1em;
 }
 
 /* SIDEBAR CONTENT LINKS */
 .left-sidebar a {
-  display: block;
-  left: 0;
-  align-items: left;
-  font-size: 25px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: var(--aw-blue);
-  background-color: var(--text-color);
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
 .left-sidebar a:hover {
-  background-color: lightslategray;
+  color: lightslategray;
 }
 
 /* TOGGLE BUTTON */
-.togglebtn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 20px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+.toggle-btn {
+  float: right;
+  margin: 0.5rem -3rem 0 0;
+  max-width: 4rem;
   color: var(--text-color);
   background-color: var(--aw-blue);
-  border: none;
-  padding: 10px 15px;
-  box-shadow: 0px 1px 4px 1px darkgray;
-  cursor: pointer;
   z-index: 1;
+  box-shadow: 0px 1px 4px 1px darkgray;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* CHANGE COLOR OF TOGGLE BUTTON ON HOVER */
-.togglebtn:hover {
+.toggle-btn:hover {
   background-color: lightslategray;
 }
 
-/* PUSH CONTENT OF MAIN PAGE TO RIGHT WHEN YOU OPEN LEFT SIDEBAR */
-.container-grid {
-  transition: linear 1.0s ease-in-out;
-  padding: 20px;
-}
-
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */
-@media screen and (max-height: 450px) {
+/* @media screen and (max-height: 450px) {
   .left-sidebar {padding-top: 15px;}
   .left-sidebar a {font-size: 18px;}
-}
+} */
 
 /* MOBILE FIRST STYLING */
 /* @media only screen and (min-width: 600px) {
