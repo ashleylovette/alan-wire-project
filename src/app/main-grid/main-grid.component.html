@@ -1,7 +1,10 @@
 <div class="container-grid" id="container-grid" *ngIf="isOpen"(toggle)="onToggleLeftSidebar()">
 <div class="container-grid">
-  <app-dashboard-item class="dashboard-item medium"></app-dashboard-item>
-  <app-dashboard-item class="dashboard-item"></app-dashboard-item>
-  <app-dashboard-item class="dashboard-item"></app-dashboard-item>
-  <app-dashboard-item class="dashboard-item medium"></app-dashboard-item>
+  <!-- *ngFor loop, bind to individual dashboard item, bind to index -->
+  <app-dashboard-item
+    class="dashboard-item"
+    *ngFor="let item of dashBoardItems; let i = index"
+    [dbItem]="item"
+    [index]="i"
+  ></app-dashboard-item>
 </div>
