@@ -13,30 +13,20 @@
   padding: 20px;
 }
 
-
 .dashboard-item {
   display: flex;
   border: 2px solid black;
-  height: 10rem;
-  width: 10rem;
+  max-width: fit-content;
 }
 
-.con-1 {
-  background-color: blue;
+.small {
+  grid-column: span 1;
 }
 
-.con-2 {
-  background-color: green;
+.medium {
+  grid-column: span 2;
 }
 
-.con-3 {
-  background-color: red;
-}
-
-.con-4 {
-  background-color: yellow;
-}
-
-.con-5{
-  background-color: purple;
+.large {
+  grid-column: span 3;
 }
