@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { DashboardItem } from './dashboard-item/dashboard-item.model';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-main-grid',
@@ -10,6 +11,9 @@ import { DashboardItem } from './dashboard-item/dashboard-item.model';
 export class MainGridComponent implements OnInit {
   dashBoardItems: DashboardItem[];
   name: string;
+  isOpen = false;
+  @Input()toggle: any;
+
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -18,4 +22,13 @@ export class MainGridComponent implements OnInit {
     this.dashBoardItems = this.dashboardService.getDashboard();
   }
 
+  onToggleLeftSidebar() {
+    if (this.isOpen) {
+      document.getElementById('left-sidebar').style.marginRight='15%';
+      document.getElementById('container-grid').style.marginLeft='15%';
+    } else {
+      document.getElementById('left-sidebar').style.marginRight='0';
+      document.getElementById('container-grid').style.marginLeft='0';
+    }
+  }
 }

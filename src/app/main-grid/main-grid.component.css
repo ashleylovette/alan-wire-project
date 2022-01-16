@@ -7,6 +7,12 @@
   margin-bottom: 2rem;
 }
 
+/* PUSH CONTENT OF MAIN PAGE TO RIGHT WHEN YOU OPEN LEFT SIDEBAR */
+.container-grid {
+  transition: linear 1.0s ease-in-out;
+  padding: 20px;
+}
+
 .dashboard-item {
   display: flex;
   border: 2px solid black;
