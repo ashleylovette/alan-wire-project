@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
+import { DashboardItem } from './dashboard-item/dashboard-item.model';
 
 @Component({
   selector: 'app-main-grid',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-grid.component.css']
 })
 export class MainGridComponent implements OnInit {
+  dashBoardItems: DashboardItem[];
+  name: string;
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // Get dashboard items on init
+    this.dashBoardItems = this.dashboardService.getDashboard();
   }
 
 }

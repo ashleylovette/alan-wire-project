@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DashboardService } from 'src/app/services/dashboard.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { DashboardItem } from './dashboard-item.model';
 
 @Component({
   selector: 'app-dashboard-item',
@@ -7,10 +7,12 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   styleUrls: ['./dashboard-item.component.css'],
 })
 export class DashboardItemComponent implements OnInit {
-  itemName: string;
-  imgPath: string;
+  // Input data from main-grid.component.html
+    @Input() dbItem: DashboardItem;
+    @Input() index: number;
 
-  constructor(dashboardService: DashboardService) {}
+  constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
 }

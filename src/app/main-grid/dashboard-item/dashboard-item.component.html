@@ -1,12 +1,9 @@
 <a class="item">
   <div class="head">
-    <p>Test</p>
+    <p>{{ dbItem.name }}</p>
     <mat-icon aria-hidden="false" aria-label="Refresh">settings</mat-icon>
   </div>
   <div class="body">
-    <img
-      src="https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg"
-      alt=" {{ itemName }} "
-    />
+    <img src="{{ dbItem.imgPath }}" />
   </div>
 </a>
