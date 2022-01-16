@@ -9,19 +9,23 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
+  margin-left: 0;
 }
 
 .left-col {
   display: flex;
   flex-direction: column;
-  width: 15%;
-  margin-left: 2.5%;
+  border: 2px solid lightgray;
+  min-width: 15%;
+  left: 0;
+  /* margin-left: 2.5%; */
 }
 
-.center-col {
+  .center-col {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
+  margin: 1em 1em;
 }
 
 .right-col {
@@ -29,4 +33,8 @@
   flex-direction: column;
   width: 15%;
   margin-right: 2.5%;
+}
+
+.toggle-sidebar {
+  transform: translateX(-100%);
 }

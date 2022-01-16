@@ -1,15 +1,12 @@
 <!-- ENTIRE SIDEBAR -->
 <div class="sidebar-container">
   <!-- OPEN BUTTON, DISPLAYED -->
-  <button
-    class="togglebtn"
-    (click)="toggleSidebar()">XXX
-  </button>
+  <button class="toggle-btn">XXX</button>
   <!-- CONTENT LINKS, DISPLAYED WHEN OPEN -->
-  <div
-    class="left-sidebar" id="left-sidebar" *ngIf="isOpen"(toggle)="toggleSidebar()">
-      <a href="#">Option 1</a>
-      <a href="#">Option 2</a>
-      <a href="#">Option 3</a>
+  <div class="left-sidebar">
+    <h6 class="lead">Dashboards:</h6>
+    <a>Option 1</a>
+    <a>Option 2</a>
+    <a>Option 3</a>
   </div>
 </div>
