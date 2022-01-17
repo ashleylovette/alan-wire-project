@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardItemComponent } from './main-grid/dashboard-item/dashboard-item.component';
 import { ToggleSidebarDirective } from './toggle-sidebar.directive';
+import { SizeDirective } from './size.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToggleSidebarDirective } from './toggle-sidebar.directive';
     HeaderComponent,
     DashboardItemComponent,
     ToggleSidebarDirective,
+    SizeDirective,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
