@@ -4,14 +4,14 @@
   </div>
 
   <div class="my-row">
-    <app-left-sidebar class="left-col" appToggleSidebar></app-left-sidebar>
+    <app-left-sidebar class="left-col" appToggleLeftSidebar></app-left-sidebar>
 
     <app-main-grid class="center-col"></app-main-grid>
 
-    <div class="right-col">
-      <!-- Right Component -->
-      Right column goes here.
-    </div>
+    <app-right-sidebar
+      class="right-col"
+      appToggleRightSidebar
+    ></app-right-sidebar>
   </div>
 
   <app-footer></app-footer>

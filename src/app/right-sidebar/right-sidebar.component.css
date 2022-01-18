@@ -1,0 +1,38 @@
+
+/* SIDEBAR CONTENT BOX */
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 100vh;
+  padding-top: 1em;
+  width: 100%;
+  margin: 1em;
+}
+
+/* SIDEBAR CONTENT LINKS */
+.left-sidebar a {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* CHANGE COLOR OF CONTENT LINKS ON HOVER */
+.left-sidebar a:hover {
+  color: lightslategray;
+}
+
+/* TOGGLE BUTTON */
+.toggle-btn {
+  float: left;
+  margin: 0.5rem 0 0 -3rem;
+  max-width: 4rem;
+  color: var(--text-color);
+  background-color: var(--aw-blue);
+  z-index: 1;
+  box-shadow: 0px 1px 4px 1px darkgray;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* CHANGE COLOR OF TOGGLE BUTTON ON HOVER */
+.toggle-btn:hover {
+  background-color: lightslategray;
+}
