@@ -8,18 +8,19 @@ export class DashboardService {
   private dashboard: DashboardItem[] = [
     new DashboardItem(
       'Test 1',
-      '3',
+      3,
       'https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg'
     ),
     new DashboardItem(
       'Test 2',
-      '4',
+      1,
       'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg'
     ),
     new DashboardItem(
       'Test Table',
-      '2',
-      'https://blogs.sas.com/content/graphicallyspeaking/files/2014/12/graphTable-300x225.png'
+      2,
+      'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg'
+      // 'https://blogs.sas.com/content/graphicallyspeaking/files/2014/12/graphTable-300x225.png'
     ),
   ];
 
