@@ -31,10 +31,16 @@
 .right-col {
   display: flex;
   flex-direction: column;
-  width: 15%;
-  margin-right: 2.5%;
+  border: 2px solid lightgray;
+  min-width: 15%;
+  right: 0;
+  /* margin-right: 2.5%; */
 }
 
-.toggle-sidebar {
+.toggle-left-sidebar {
   transform: translateX(-100%);
+}
+
+.toggle-right-sidebar {
+  transform: translateX(100%);
 }
