@@ -1,6 +1,6 @@
 
 /* SIDEBAR CONTENT BOX */
-.left-sidebar {
+.right-sidebar {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -11,12 +11,12 @@
 }
 
 /* SIDEBAR CONTENT LINKS */
-.left-sidebar a {
+.right-sidebar a {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
-.left-sidebar a:hover {
+.right-sidebar a:hover {
   color: lightslategray;
 }
 
