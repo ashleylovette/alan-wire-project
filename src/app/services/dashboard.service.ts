@@ -3,7 +3,6 @@
 //Observable/Subject to update UI when this array changes.
 
 // Function to return ONLY the selected Dashboard's contents.
-// Function to Add Item to Selected Dashboard.
 // Function to Delete Selected Item from Selected Dashboard.
 
 import { Injectable } from '@angular/core';
@@ -88,6 +87,14 @@ export class DashboardService {
 
   constructor() {}
 
+  getDashNames(index: number) {
+    return this.dashArray[index].name;
+  }
+
+  getArray() {
+    return this.dashArray.slice();
+  }
+
   createDashboard(name: string) {
     this.dashArray.push({ name: name });
   }
@@ -95,6 +102,18 @@ export class DashboardService {
   getName(index: number) {
     return this.dashArray[index].name;
   }
+
+  getDashboard(index: number) {
+    return this.dashArray[index];
+  }
+
+  addDashItem(index: number) {
+    this.dashArray[index].items.push;
+  }
+
+  // deleteDashItem(index: number, item: number) {
+  //   this.dashArray[index].items[item].
+  // }
 
   //This code can be removed once we can render and selected dashboard from the left sidebar.
   private dashboard: DashboardItem[] = [
@@ -115,7 +134,7 @@ export class DashboardService {
     ),
   ];
 
-  getDashboard() {
-    return this.dashboard.slice();
-  }
+  // getDashboard() {
+  //   return this.dashboard.slice();
+  // }
 }
