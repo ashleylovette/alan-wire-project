@@ -1,14 +1,14 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appToggleSidebar]'
+  selector: '[appToggleRightSidebar]'
 })
-export class ToggleSidebarDirective {
-  @HostBinding('class.toggle-sidebar') isOpen = true;
+export class ToggleRightSidebarDirective {
+  @HostBinding('class.toggle-right-sidebar') isOpen = true;
+
+  constructor() { }
 
   @HostListener('click') toggleOpen() {
     this.isOpen = !this.isOpen;
   }
-
-
 }

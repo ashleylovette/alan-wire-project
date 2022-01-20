@@ -11,8 +11,10 @@ import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardItemComponent } from './main-grid/dashboard-item/dashboard-item.component';
-import { ToggleSidebarDirective } from './toggle-sidebar.directive';
+import { ToggleSidebarDirective } from './toggle-left-sidebar.directive';
 import { SizeDirective } from './size.directive';
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
+import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { SizeDirective } from './size.directive';
     DashboardItemComponent,
     ToggleSidebarDirective,
     SizeDirective,
+    RightSidebarComponent,
+    ToggleRightSidebarDirective,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, MatIconModule],
   providers: [],

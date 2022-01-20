@@ -1,6 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { DashboardItem } from './main-grid/dashboard-item/dashboard-item.model';
-import { DashboardService } from './services/dashboard.service';
 
 @Directive({
   selector: '[appSize]'
