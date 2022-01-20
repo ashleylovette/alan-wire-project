@@ -16,6 +16,8 @@
   display: flex;
   flex-direction: column;
   border: 2px solid lightgray;
+  background-color: var(--text-color);
+
   min-width: 15%;
   left: 0;
   /* margin-left: 2.5%; */
