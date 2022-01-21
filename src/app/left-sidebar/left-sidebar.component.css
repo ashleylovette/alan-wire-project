@@ -23,7 +23,7 @@
 /* TOGGLE BUTTON */
 .toggle-btn {
   float: right;
-  margin: 0.5rem -3rem 0 0;
+  margin: 0.5rem -20% 0 0;
   max-width: 4rem;
   color: var(--text-color);
   background-color: var(--aw-blue);
@@ -35,6 +35,15 @@
 /* CHANGE COLOR OF TOGGLE BUTTON ON HOVER */
 .toggle-btn:hover {
   background-color: lightslategray;
+}
+
+button {
+  background-color: white;
+  width: max-content;
+  position: relative;
+  top: 6;
+  margin: 0;
+  border: none;
 }
 
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */

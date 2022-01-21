@@ -18,4 +18,7 @@ export class LeftSidebarComponent implements OnInit {
       this.dashArray = dashboards;
     });
   }
+  onAddDashboard() {
+  this.dashboardService.addDashboard.next();
+  }
 }
