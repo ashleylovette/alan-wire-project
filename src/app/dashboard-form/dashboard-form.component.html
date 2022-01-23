@@ -1,0 +1,40 @@
+<div class="container-form text-center">
+  <form
+    [formGroup]="dashboardForm"
+    (ngSubmit)="onFormSubmit()"
+    *ngIf="!dashboardAdded"
+  >
+    <div class="form-group">
+      <label for="dashName" class="lead pb-2 form-items">New Dashboard:</label>
+      <input
+        id="dashName"
+        name="dashName"
+        class="form-control text-center form-items"
+        formControlName="dashName"
+        type="text"
+        placeholder="Dashboard Name"
+        required
+      />
+    </div>
+    <button
+      class="btn mt-3 submit-button form-items"
+      type="submit"
+      [disabled]="!dashboardForm.valid"
+    >
+      Create Dashboard
+    </button>
+    <button class="btn mt-3 form-items" type="button" (click)="onCancel()">
+      Cancel
+    </button>
+  </form>
+  <div *ngIf="dashboardAdded">
+    <h4 class="lead">Dashboard Created!</h4>
+    <button
+      class="btn mt-3 form-items okay-button"
+      type="button"
+      (click)="onCancel()"
+    >
+      Okay
+    </button>
+  </div>
+</div>

@@ -15,6 +15,8 @@ import { ToggleSidebarDirective } from './toggle-left-sidebar.directive';
 import { SizeDirective } from './size.directive';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
+import { DashboardFormComponent } from './dashboard-form/dashboard-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,14 @@ import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
     SizeDirective,
     RightSidebarComponent,
     ToggleRightSidebarDirective,
+    DashboardFormComponent
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

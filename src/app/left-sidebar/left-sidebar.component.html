@@ -10,5 +10,8 @@
     <a cursor= "pointer" *ngFor="let dashboard of dashArray;let i = index" [dashboard] = "dashboard" [index] = "i">
       <p class="list-group-item-text">{{dashboard.name}}</p>
     </a>
+  <button type="button" (click)="onAddDashboard()">
+    <mat-icon>add</mat-icon>
+  </button>
   </div>
 </div>
