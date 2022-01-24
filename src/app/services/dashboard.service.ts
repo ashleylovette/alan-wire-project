@@ -8,6 +8,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -87,6 +88,8 @@ export class DashboardService {
       ],
     },
   ];
+
+  addDashboard = new Subject<void>();
 
   constructor() {}
 

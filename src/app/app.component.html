@@ -6,6 +6,10 @@
   <div class="my-row">
     <app-left-sidebar class="left-col" appToggleLeftSidebar></app-left-sidebar>
 
+    <app-dashboard-form
+      class="dashboard-form"
+      *ngIf="addDashboard"
+    ></app-dashboard-form>
     <app-main-grid class="center-col"></app-main-grid>
 
     <app-right-sidebar
