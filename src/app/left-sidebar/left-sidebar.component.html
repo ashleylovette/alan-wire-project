@@ -8,11 +8,16 @@
   <button type="button" (click)="onAddDashboard()">
     <mat-icon>add</mat-icon>
   </button>
-  <div class="left-sidebar">
+<div class="left-sidebar" >
+    <h6 class="lead" >Dashboards:</h6>
+    <a cursor= "pointer" *ngFor="let dashboard of dashArray;let i = index" [dashboard] = "dashboard" [index] = "i">
+      <p class="list-group-item-text">{{dashboard.name}}</p>
+    </a>
+<!--   <div class="left-sidebar">
     <h6 class="lead">Dashboards:</h6>
     <!-- <span *ngFor="let dashboards of dashArray">{{ Dashboard.name }}</span> -->
-    <a>Option 1</a>
+<!--     <a>Option 1</a>
     <a>Option 2</a>
-    <a>Option 3</a>
+    <a>Option 3</a> -->
   </div>
 </div>
