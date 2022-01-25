@@ -13,6 +13,8 @@
 /* SIDEBAR CONTENT LINKS */
 .right-sidebar a {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  float: left;
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
@@ -35,4 +37,13 @@
 /* CHANGE COLOR OF TOGGLE BUTTON ON HOVER */
 .toggle-btn:hover {
   background-color: lightslategray;
+}
+
+button.add {
+  background-color: white;
+  border: none;
+}
+
+button.add mat-icon{
+  color: rgb(150, 146, 146);
 }

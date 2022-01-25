@@ -18,6 +18,8 @@ import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
 import { DashboardFormComponent } from './dashboard-form/dashboard-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
+import { DashboardStartComponent } from './dashboard-start/dashboard-start.component';
+
 
 @NgModule({
   declarations: [
@@ -32,14 +34,16 @@ import { ToggleComponent } from './toggle/toggle.component';
     RightSidebarComponent,
     ToggleRightSidebarDirective,
     DashboardFormComponent,
-    ToggleComponent
+    ToggleComponent,
+    DashboardStartComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })

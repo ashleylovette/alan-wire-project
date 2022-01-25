@@ -4,19 +4,23 @@
   </div>
 
   <div class="my-row">
-    <app-left-sidebar class="right-col" id="leftBar"></app-left-sidebar>
+
+    <app-left-sidebar class="left-col" id="leftBar"></app-left-sidebar>
 
     <app-dashboard-form
       class="dashboard-form"
       *ngIf="addDashboard"
     ></app-dashboard-form>
 
-    <div class="center-col" id="centerContent">
-      <app-toggle></app-toggle>
-      <app-main-grid></app-main-grid>
-    </div>
+    <app-dashboard-start
+      class="center-col"
+      *ngIf="!dashboardSelected"
+    ></app-dashboard-start>
+    <app-main-grid class="center-col" *ngIf="dashboardSelected"></app-main-grid>
 
-    <app-right-sidebar class="left-col" id="rightBar"></app-right-sidebar>
+    <!-- <router-outlet class="center-col"></router-outlet> -->
+
+    <app-right-sidebar class="right-col" id="rightBar"></app-right-sidebar>
   </div>
 
   <app-footer></app-footer>

@@ -9,7 +9,8 @@
     <mat-icon>add</mat-icon>
   </button>
   <div class="left-sidebar">
-    <h6 class="lead">Dashboards:</h6>
+
+<!--     <h6 class="lead">Dashboards:</h6>
     <a
       cursor="pointer"
       *ngFor="let dashboard of dashArray; let i = index"
@@ -17,12 +18,17 @@
       [index]="i"
     >
       <p class="list-group-item-text">{{ dashboard.name }}</p>
-    </a>
-    <!--   <div class="left-sidebar">
+    </a> -->
+
     <h6 class="lead">Dashboards:</h6>
-    <!-- <span *ngFor="let dashboards of dashArray">{{ Dashboard.name }}</span> -->
-    <!--     <a>Option 1</a>
-    <a>Option 2</a>
-    <a>Option 3</a> -->
+    <a
+      *ngFor="let dashboard of dashArray; let i = index"
+      [dashboard]="dashboard"
+      [index]="i"
+      (click)="onDashboardSelected(dashboard)"
+    >
+      <p class="list-group-item-text">{{ dashboard.name }}</p>
+    </a>
+
   </div>
 </div>
