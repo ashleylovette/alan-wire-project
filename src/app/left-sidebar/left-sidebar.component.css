@@ -38,13 +38,18 @@
   background-color: lightslategray;
 }
 
+span{
+  position: absolute;
+}
+
 button {
   background-color: white;
-  width: max-content;
   position: relative;
+  border: none;
+  float: right;
+  width: max-content;
   top: 6;
   margin: 0;
-  border: none;
 }
 
 /* CHANGE PADDING AND FONT SIZE FOR SMALLER SCREENS */

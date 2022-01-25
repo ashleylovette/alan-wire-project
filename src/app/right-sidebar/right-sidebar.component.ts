@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
+import { DashboardItemService } from '../services/dashboard-item.service';
 
 @Component({
   selector: 'app-right-sidebar',
@@ -6,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./right-sidebar.component.css']
 })
 export class RightSidebarComponent implements OnInit {
+  dashboardItems: DashboardItem[];
+  @Input() item: DashboardItem;
+  @Input() index: number;
 
+  constructor(private dashItemsService: DashboardItemService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.dashboardItems = this.dashItemsService.getDashItems();
+    console.log(this.dashboardItems);
   }
 }
