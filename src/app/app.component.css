@@ -5,14 +5,39 @@
 }
 
 .my-row {
+display: grid;
+width: 100%;
+grid-gap: 0px;
+grid-template-columns:(3, 15%, 60%, 15%);
+margin: .5%;
+}
+
+.hide {
+  grid-column: 0;
+}
+
+.small {
+  grid-column: 1;
+}
+
+.medium {
+  grid-column: 2;
+}
+
+.large {
+  grid-column: 3
+}
+
+/*
+.my-row {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
   margin-left: 0;
-}
+} */
 
-.left-col {
+/* .left-col {
   display: flex;
   flex-direction: column;
   border: 2px solid lightgray;
@@ -20,8 +45,8 @@
 
   min-width: 15%;
   left: 0;
-  /* margin-left: 2.5%; */
-}
+  /* margin-left: 2.5%;
+} */
 
 .dashboard-form {
   position: absolute;
@@ -29,7 +54,7 @@
 }
 
 
-  .center-col {
+  /* .center-col {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -41,8 +66,8 @@
   border: 2px solid lightgray;
   min-width: 15%;
   right: 0;
-  /* margin-right: 2.5%; */
-}
+  /* margin-right: 2.5%;
+} */
 
 .toggle-left-sidebar {
   transform: translateX(-100%);
