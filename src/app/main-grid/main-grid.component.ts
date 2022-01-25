@@ -1,4 +1,4 @@
-import { DashboardService } from '../../services/dashboard.service';
+import { DashboardService } from '../services/dashboard.service';
 import { DashboardItem } from './dashboard-item/dashboard-item.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Dashboard } from './dashboard.model';
@@ -15,21 +15,23 @@ export class MainGridComponent implements OnInit {
   dashBoardItems: DashboardItem[];
   name: string;
   selectedDashboard: Dashboard;
-  index: number;
+  @Input() id: number;
   selectDashboard = new Subscription;
 
-  constructor(private dashboardService: DashboardService, private route: ActivatedRoute) { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     // Get selected dashboard on init
+    this.selectDashboard = this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
+      this.selectedDashboard = dashboard;
+      this.dashBoardItems = dashboard.items;
+      console.log(dashboard);
+    });
 
-    this.route.params
-    .subscribe((params: Params)=> {
-      debugger
-      this.index = +params['id'];
-      this.selectedDashboard = this.dashboardService.getDashboard(this.index);
-      this.dashBoardItems = this.selectedDashboard.items;
-    })
+    // this.route.params.subscribe((params: Params)=> {
+    //   this.id = +params['id'];
+    //   this.selectedDashboard = this.dashboardService.getDashboard(this.id);
+    // })
 
   }
 

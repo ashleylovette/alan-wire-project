@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Dashboard } from '../dashboard/main-grid/dashboard.model';
+import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
 
 @Component({
@@ -9,8 +9,10 @@ import { DashboardService } from '../services/dashboard.service';
 })
 export class LeftSidebarComponent implements OnInit {
   dashArray: Dashboard[];
-  dashboard: Dashboard;
-  @Input() index: number;
+  @Input()index: number;
+  @Input()dashboard: Dashboard;
+  @Output()selectedDash = new EventEmitter<string>();
+
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -18,8 +20,15 @@ export class LeftSidebarComponent implements OnInit {
     this.dashArray = this.dashboardService.getArray();
     this.dashboardService.dashboardsChanged.subscribe((dashboard: Dashboard[]) => {
       this.dashArray = dashboard});
+      // console.log('changed');
   }
   onAddDashboard() {
   this.dashboardService.addDashboard.next();
+  }
+
+
+  onDashboardSelected(dashboard: Dashboard, id: number) {
+    this.dashboardService.dashboardSelected.next(dashboard);
+    // console.log(dashboard);
   }
 }

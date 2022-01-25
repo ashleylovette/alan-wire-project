@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DashboardItem } from '../dashboard/main-grid/dashboard-item/dashboard-item.model';
+import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 import { DashboardItemService } from '../services/dashboard-item.service';
 
 @Component({
