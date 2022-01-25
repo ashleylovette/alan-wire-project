@@ -6,8 +6,8 @@
 // Function to Delete Selected Item from Selected Dashboard.
 
 import { EventEmitter, Injectable } from '@angular/core';
-import { Dashboard } from '../main-grid/dashboard.model';
-import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
+import { Dashboard } from '../dashboard/main-grid/dashboard.model';
+import { DashboardItem } from '../dashboard/main-grid/dashboard-item/dashboard-item.model';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -110,8 +110,8 @@ export class DashboardService {
     return this.dashArray[index].name;
   }
 
-  getDashboard(id: number) {
-    return this.dashArray.slice()[id];
+  getDashboard(index: number) {
+    return this.dashArray.slice()[index];
   }
 
   addDashItem(index: number) {

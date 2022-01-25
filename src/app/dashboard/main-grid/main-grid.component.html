@@ -1,11 +1,9 @@
 <div class="container-grid">
-  <!-- <h2>{{ selectedDashboard.name }}</h2> -->
   <!-- *ngFor loop, bind to individual dashboard item, bind to index -->
   <app-dashboard-item
     class="dashboard-item"
-    *ngFor="let item of dashBoardItems; let i = index"
+    *ngFor="let item of dashBoardItems"
     [dbItem]="item"
-    [index]="i"
     appSize
   ></app-dashboard-item>
 </div>
