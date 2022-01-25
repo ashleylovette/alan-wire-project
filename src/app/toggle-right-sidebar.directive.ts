@@ -10,5 +10,20 @@ export class ToggleRightSidebarDirective {
 
   @HostListener('click') toggleOpen() {
     this.isOpen = !this.isOpen;
+    if(this.isOpen) {
+      document.getElementById('rightBar').className = 'hide'
+      if(document.getElementById('centerContent').className = 'small') {
+        document.getElementById('centerContent').className = 'medium';
+      } else if(document.getElementById('centerContent').className = 'medium') {
+        document.getElementById('centerContent').className = 'large';
+      }
+    } else if(!this.isOpen) {
+      document.getElementById('rightBar').className = 'small'
+      if(document.getElementById('centerContent').className = 'large') {
+        document.getElementById('centerContent').className = 'medium';
+      } else if(document.getElementById('centerContent').className = 'medium') {
+        document.getElementById('centerContent').className = 'small';
+      }
+    }
   }
 }

@@ -17,7 +17,9 @@ import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
 import { DashboardFormComponent } from './dashboard-form/dashboard-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToggleComponent } from './toggle/toggle.component';
 import { DashboardStartComponent } from './dashboard-start/dashboard-start.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { DashboardStartComponent } from './dashboard-start/dashboard-start.compo
     RightSidebarComponent,
     ToggleRightSidebarDirective,
     DashboardFormComponent,
+    ToggleComponent,
     DashboardStartComponent
   ],
   imports: [

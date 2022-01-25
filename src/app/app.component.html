@@ -4,7 +4,9 @@
   </div>
 
   <div class="my-row">
-    <app-left-sidebar class="left-col" appToggleLeftSidebar></app-left-sidebar>
+
+    <app-left-sidebar class="left-col" id="leftBar"></app-left-sidebar>
+
     <app-dashboard-form
       class="dashboard-form"
       *ngIf="addDashboard"
@@ -18,10 +20,7 @@
 
     <!-- <router-outlet class="center-col"></router-outlet> -->
 
-    <app-right-sidebar
-      class="right-col"
-      appToggleRightSidebar
-    ></app-right-sidebar>
+    <app-right-sidebar class="right-col" id="rightBar"></app-right-sidebar>
   </div>
 
   <app-footer></app-footer>
