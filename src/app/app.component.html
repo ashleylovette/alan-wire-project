@@ -4,16 +4,22 @@
   </div>
 
   <div class="my-row">
-    <app-left-sidebar class="small" appToggleLeftSidebar></app-left-sidebar>
+    <app-left-sidebar
+      class="small"
+      id="leftBar"
+      appToggleLeftSidebar></app-left-sidebar>
 
     <app-dashboard-form
-      class="small"
+      class="dashboard-form"
       *ngIf="addDashboard"
     ></app-dashboard-form>
-    <app-main-grid class="center-col"></app-main-grid>
+    <app-main-grid
+      class="small"
+      id="centerContent"></app-main-grid>
 
     <app-right-sidebar
       class="small"
+      id="rightBar"
       appToggleRightSidebar
     ></app-right-sidebar>
   </div>
