@@ -13,6 +13,7 @@
 /* SIDEBAR CONTENT LINKS */
 .left-sidebar a {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  cursor: pointer;
 }
 
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */

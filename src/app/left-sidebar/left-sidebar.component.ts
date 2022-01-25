@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
 
@@ -11,16 +11,20 @@ export class LeftSidebarComponent implements OnInit {
   dashArray: Dashboard[];
   @Input()index: number;
   @Input()dashboard: Dashboard;
+  @Output()selectedDash = new EventEmitter<string>();
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
-    // this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard[]) => {
-    //   this.dashArray = dashboard;
-    // });
+    this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard[]) => {
+      this.dashArray = dashboard;
+    });
   }
   onAddDashboard() {
   this.dashboardService.addDashboard.next();
+  }
+  onSelectDash(dash: string) {
+    this.selectedDash.emit(dash);
   }
 }

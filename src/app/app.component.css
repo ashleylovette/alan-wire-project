@@ -17,7 +17,6 @@
   flex-direction: column;
   border: 2px solid lightgray;
   background-color: var(--text-color);
-
   min-width: 15%;
   left: 0;
   /* margin-left: 2.5%; */
@@ -29,7 +28,7 @@
 }
 
 
-  .center-col {
+.center-col {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -38,6 +37,7 @@
 .right-col {
   display: flex;
   flex-direction: column;
+  background-color: var(--text-color);
   border: 2px solid lightgray;
   min-width: 15%;
   right: 0;
