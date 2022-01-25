@@ -110,8 +110,8 @@ export class DashboardService {
     return this.dashArray[index].name;
   }
 
-  getDashboard(index: number) {
-    return this.dashArray[index];
+  getDashboard(id: number) {
+    return this.dashArray.slice()[id];
   }
 
   addDashItem(index: number) {

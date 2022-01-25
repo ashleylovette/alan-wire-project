@@ -16,7 +16,7 @@ export class RightSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.dashboardItems = this.dashItemsService.getDashItems();
-    console.log(this.dashboardItems);
+    // console.log(this.dashboardItems);
   }
 
 }

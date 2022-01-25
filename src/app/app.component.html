@@ -5,12 +5,18 @@
 
   <div class="my-row">
     <app-left-sidebar class="left-col" appToggleLeftSidebar></app-left-sidebar>
-
     <app-dashboard-form
       class="dashboard-form"
       *ngIf="addDashboard"
     ></app-dashboard-form>
-    <app-main-grid class="center-col"></app-main-grid>
+
+    <app-dashboard-start
+      class="center-col"
+      *ngIf="!dashboardSelected"
+    ></app-dashboard-start>
+    <app-main-grid class="center-col" *ngIf="dashboardSelected"></app-main-grid>
+
+    <!-- <router-outlet class="center-col"></router-outlet> -->
 
     <app-right-sidebar
       class="right-col"
