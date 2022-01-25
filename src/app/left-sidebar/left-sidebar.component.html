@@ -13,7 +13,9 @@
     <a
       *ngFor="let dashboard of dashArray; let i = index"
       [dashboard]="dashboard"
-      [index]="i">
+      [index]="i"
+      (click)="onDashboardSelected(dashboard)"
+    >
       <p class="list-group-item-text">{{ dashboard.name }}</p>
     </a>
   </div>

@@ -27,8 +27,10 @@ export class LeftSidebarComponent implements OnInit {
   onAddDashboard() {
   this.dashboardService.addDashboard.next();
   }
-  onSelectDash(dash: string) {
-    this.selectedDash.emit(dash);
-  }
 
+
+  onDashboardSelected(dashboard: Dashboard, id: number) {
+    this.dashboardService.dashboardSelected.next(dashboard);
+    // console.log(dashboard);
+  }
 }
