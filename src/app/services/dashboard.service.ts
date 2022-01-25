@@ -118,9 +118,9 @@ export class DashboardService {
     this.dashArray[index].items.push;
   }
 
-  // deleteDashItem(index: number, item: number) {
-  //   this.dashArray[index].items[item].
-  // }
+  deleteDashItem(index: number, item: number) {
+    this.dashArray[index].items.splice(item, 1)
+  }
 
   //This code can be removed once we can render and selected dashboard from the left sidebar.
   private dashboard: DashboardItem[] = [
