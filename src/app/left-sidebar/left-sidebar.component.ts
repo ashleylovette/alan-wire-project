@@ -13,13 +13,16 @@ export class LeftSidebarComponent implements OnInit {
   @Input()dashboard: Dashboard;
   @Output()selectedDash = new EventEmitter<string>();
 
+
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
-    this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard[]) => {
-      this.dashArray = dashboard;
-    });
+    this.dashboardService.dashboardSelected.subscribe((dashboard:Dashboard[]) => {
+      this.dashArray = dashboard});
+    this.dashboardService.dashboardsChanged.subscribe((dashboard: Dashboard[]) => {
+      this.dashArray = dashboard});
+      console.log('changed');
   }
   onAddDashboard() {
   this.dashboardService.addDashboard.next();
@@ -27,4 +30,5 @@ export class LeftSidebarComponent implements OnInit {
   onSelectDash(dash: string) {
     this.selectedDash.emit(dash);
   }
+
 }
