@@ -4,7 +4,6 @@
   </div>
 
   <div class="my-row">
-
     <app-left-sidebar class="left-col" id="leftBar"></app-left-sidebar>
 
     <app-dashboard-form
@@ -12,11 +11,11 @@
       *ngIf="addDashboard"
     ></app-dashboard-form>
 
-    <app-dashboard-start
-      class="center-col"
-      *ngIf="!dashboardSelected"
-    ></app-dashboard-start>
-    <app-main-grid class="center-col" *ngIf="dashboardSelected"></app-main-grid>
+    <div class="center-col">
+      <app-toggle></app-toggle>
+      <app-dashboard-start *ngIf="!dashboardSelected"></app-dashboard-start>
+      <app-main-grid *ngIf="dashboardSelected"></app-main-grid>
+    </div>
 
     <!-- <router-outlet class="center-col"></router-outlet> -->
 

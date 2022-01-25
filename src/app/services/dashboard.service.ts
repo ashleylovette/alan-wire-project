@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 })
 export class DashboardService {
   dashboardsChanged = new EventEmitter<Dashboard[]>();
-  dashboardSelected = new EventEmitter<object>();
+  dashboardSelected = new Subject<object>();
 
   private dashArray: Dashboard[] = [
     {

@@ -25,6 +25,7 @@ export class MainGridComponent implements OnInit {
     this.selectDashboard = this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
       this.selectedDashboard = dashboard;
       this.dashBoardItems = dashboard.items;
+      console.log(dashboard);
     });
 
     // this.route.params.subscribe((params: Params)=> {

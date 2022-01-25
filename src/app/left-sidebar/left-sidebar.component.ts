@@ -18,11 +18,9 @@ export class LeftSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
-    this.dashboardService.dashboardSelected.subscribe((dashboard:Dashboard[]) => {
-      this.dashArray = dashboard});
     this.dashboardService.dashboardsChanged.subscribe((dashboard: Dashboard[]) => {
       this.dashArray = dashboard});
-      console.log('changed');
+      // console.log('changed');
   }
   onAddDashboard() {
   this.dashboardService.addDashboard.next();
