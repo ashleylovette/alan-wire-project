@@ -18,5 +18,4 @@ export class RightSidebarComponent implements OnInit {
     this.dashboardItems = this.dashItemsService.getDashItems();
     console.log(this.dashboardItems);
   }
-
 }

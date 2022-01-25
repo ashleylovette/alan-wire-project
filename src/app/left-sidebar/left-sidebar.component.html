@@ -13,8 +13,7 @@
     <a
       *ngFor="let dashboard of dashArray; let i = index"
       [dashboard]="dashboard"
-      [index]="i"
-    >
+      [index]="i">
       <p class="list-group-item-text">{{ dashboard.name }}</p>
     </a>
   </div>
