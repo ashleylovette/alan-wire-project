@@ -14,7 +14,6 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   @Input()index: number;
   @Input()dashboard: Dashboard;
 
-
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
@@ -37,8 +36,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
     this.dashboardService.deleteDashboard(index);
   }
 
-  onDashboardSelected(dashboard: Dashboard, id: number) {
+  onDashboardSelected(dashboard) {
     this.dashboardService.dashboardSelected.next(dashboard);
   }
-
 }
