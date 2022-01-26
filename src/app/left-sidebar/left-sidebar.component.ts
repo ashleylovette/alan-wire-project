@@ -1,5 +1,5 @@
 
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
@@ -12,7 +12,7 @@ import { DashboardService } from '../services/dashboard.service';
 export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashArray: Dashboard[];
   private dashboardSub: Subscription
-  @Input()index: number;
+  index: number;
   dashboard: Dashboard;
 
   constructor(private dashboardService: DashboardService) { }
@@ -25,7 +25,6 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
         this.dashArray = dashboard;
       }
     );
-
   }
   ngOnDestroy(): void {
     this.dashboardSub.unsubscribe();
@@ -38,8 +37,9 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   onRemoveDashboard(index) {
     this.dashboardService.deleteDashboard(index);
   }
-  onDashboardSelected(dashboard) {
+  onDashboardSelected(dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
+    this.index = index;
   }
 
 }
