@@ -4,5 +4,27 @@
   justify-content: space-between;
 }
 
-button {
+.left-btn {
+  border-radius: 8px;
+}
+
+.right-btn {
+  border-radius: 8px;
+}
+
+/* CHANGE COLOR ON HOVER */
+.left-btn:hover {
+  background-color: var(--highlight-color);
+}
+
+.left-btn mat-icon:hover {
+  color: var(--highlight-text);
+}
+
+.right-btn:hover {
+  background-color: var(--highlight-color);
+}
+
+.right-btn mat-icon:hover {
+  color: var(--highlight-text);
 }

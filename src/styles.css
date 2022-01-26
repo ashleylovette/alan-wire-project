@@ -12,4 +12,7 @@ body {
 :root {
   --aw-blue: #2d3e50;
   --text-color: ivory;
+  --field-color: rgb(245, 245, 245);
+  --highlight-color: rgb(200, 200, 200);
+  --highlight-text: #196ac0;
 }

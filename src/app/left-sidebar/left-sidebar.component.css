@@ -1,4 +1,3 @@
-
 /* SIDEBAR CONTENT BOX */
 .left-sidebar {
   display: flex;
@@ -16,26 +15,37 @@
   cursor: pointer;
 }
 
+button.add {
+  color: var(--aw-blue);
+  background-color: var(--field-color);
+  border-radius: 8px;
+}
+
+button.remove {
+  color: var(--aw-blue);
+  background-color: var(--field-color);
+  border-radius: 8px;
+}
+
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
 .left-sidebar a:hover {
-  color: lightslategray;
+  color: var(--highlight-text);
 }
 
-/* TOGGLE BUTTON */
-.toggle-btn {
-  float: right;
-  margin: 0.5rem -20% 0 0;
-  max-width: 4rem;
-  color: var(--text-color);
-  background-color: var(--aw-blue);
-  z-index: 1;
-  box-shadow: 0px 1px 4px 1px darkgray;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+button.add:hover {
+  background-color: var(--highlight-color);
 }
 
-/* CHANGE COLOR OF TOGGLE BUTTON ON HOVER */
-.toggle-btn:hover {
-  background-color: lightslategray;
+button.add mat-icon:hover {
+  color: var(--highlight-text);
+}
+
+button.remove:hover {
+  background-color: var(--highlight-color);
+}
+
+button.remove mat-icon:hover {
+  color: var(--highlight-text);
 }
 
 span{
