@@ -1,32 +1,22 @@
 <!-- ENTIRE SIDEBAR -->
 <div class="sidebar-container">
-  <!-- OPEN BUTTON, DISPLAYED -->
-  <!-- <button class="toggle-btn">
-    <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
-  </button> -->
-  <!-- CONTENT LINKS, DISPLAYED WHEN OPEN -->
-  <button type="button" (click)="onAddDashboard()">
-    <mat-icon>add</mat-icon>
+  <!-- ADD DASHBOARD -->
+  <button class="add" type="button" (click)="onAddDashboard()">
+    <mat-icon aria-hidden="false" aria-label="Add">add</mat-icon>
   </button>
+  <!-- DELETE DASHBOARD -->
+  <button class="remove" type="button" (click)="onRemoveDashboard(index)">
+    <mat-icon aria-hidden="false" aria-label="Remove">remove</mat-icon>
+  </button>
+  <!-- DASHBOARD LINKS, DISPLAYED WHEN OPEN -->
   <div class="left-sidebar">
-    <!--     <h6 class="lead">Dashboards:</h6>
-    <a
-      cursor="pointer"
-      *ngFor="let dashboard of dashArray; let i = index"
-      [dashboard]="dashboard"
-      [index]="i"
-    >
-      <p class="list-group-item-text">{{ dashboard.name }}</p>
-    </a> -->
-
     <h6 class="lead">Dashboards:</h6>
-    <a
-      *ngFor="let dashboard of dashArray; let i = index"
-      [dashboard]="dashboard"
-      [index]="i"
-      (click)="onDashboardSelected(dashboard)"
-    >
-      <p class="list-group-item-text">{{ dashboard.name }}</p>
-    </a>
+      <a
+        *ngFor="let dashboard of dashArray; let i = index"
+        [dashboard]="dashboard"
+        [index]="i"
+        (click)="onDashboardSelected(dashboard)">
+        <p class="list-group-item-text">{{ dashboard.name }}</p>
+      </a>
   </div>
 </div>
