@@ -6,7 +6,6 @@ import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 
 import { HeaderComponent } from './header/header.component';
 
-import { MainGridComponent } from './main-grid/main-grid.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +17,7 @@ import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
 import { DashboardFormComponent } from './dashboard-form/dashboard-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
+import { MainGridComponent } from './main-grid/main-grid.component';
 import { DashboardStartComponent } from './dashboard-start/dashboard-start.component';
 
 
@@ -42,7 +42,7 @@ import { DashboardStartComponent } from './dashboard-start/dashboard-start.compo
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent],
