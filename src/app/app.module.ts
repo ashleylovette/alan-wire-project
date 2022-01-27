@@ -18,7 +18,6 @@ import { DashboardFormComponent } from './dashboard-form/dashboard-form.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
-import { DashboardStartComponent } from './dashboard-start/dashboard-start.component';
 
 
 @NgModule({
@@ -34,8 +33,7 @@ import { DashboardStartComponent } from './dashboard-start/dashboard-start.compo
     RightSidebarComponent,
     ToggleRightSidebarDirective,
     DashboardFormComponent,
-    ToggleComponent,
-    DashboardStartComponent
+    ToggleComponent
   ],
   imports: [
     BrowserModule,
