@@ -107,8 +107,10 @@ export class DashboardService {
   }
 
   deleteDashboard(index: number) {
-    this.dashArray.splice(index, 1);
-    this.dashboardsChanged.next(this.dashArray.slice());
+    if(index!== -1) {
+      this.dashArray.splice(index, 1);
+      this.dashboardsChanged.next(this.dashArray.slice());
+    }
 
   }
 
