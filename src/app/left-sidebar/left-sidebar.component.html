@@ -11,12 +11,13 @@
   <!-- DASHBOARD LINKS, DISPLAYED WHEN OPEN -->
   <div class="left-sidebar">
     <h6 class="lead">Dashboards:</h6>
-      <a
-        *ngFor="let dashboard of dashArray; let i = index"
-        [dashboard]="dashboard"
-        [index]="i"
-        (click)="onDashboardSelected(dashboard)">
-        <p class="list-group-item-text">{{ dashboard.name }}</p>
-      </a>
+    <a
+      *ngFor="let dashboard of dashArray; let i = index"
+      [dashboard]="dashboard"
+      [index]="i"
+      (click)="onDashboardSelected(dashboard, i)"
+    >
+      <p class="list-group-item-text">{{ dashboard.name }}</p>
+    </a>
   </div>
 </div>

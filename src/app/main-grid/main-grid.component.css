@@ -3,7 +3,7 @@
   width: 1fr;
   grid-gap: 1em;
   grid-template-columns: repeat(3, 1fr);
-  margin: 2rem 0;
+  margin: 2.5%;
 }
 
 .dashboard-item {
