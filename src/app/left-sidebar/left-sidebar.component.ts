@@ -12,12 +12,13 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashArray: Dashboard[];
   private dashboardSub: Subscription
   @Input()index: number;
-  @Input()dashboard: Dashboard;
+  dashboard: Dashboard;
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
+
     this.dashboardSub = this.dashboardService.dashboardsChanged.subscribe(
       (dashboard: Dashboard[]) => {
         this.dashArray = dashboard;
