@@ -60,5 +60,6 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   handleCloseMsg() {
     this.alert = null;
     this.confirm = null;
+    console.log('hello');
   }
 }
