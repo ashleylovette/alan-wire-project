@@ -10,7 +10,7 @@ export class DashboardItemService {
       name: 'Graph 1',
       size: 3,
       imgPath:
-        'https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg',
+        'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
     },
     {
       name: 'Graph 2',
@@ -22,7 +22,7 @@ export class DashboardItemService {
       name: 'Graph 3',
       size: 2,
       imgPath:
-        'https://blogs.sas.com/content/graphicallyspeaking/files/2014/12/graphTable-300x225.png',
+        'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
     },
   ];
 
