@@ -18,6 +18,8 @@ import { DashboardFormComponent } from './dashboard-form/dashboard-form.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
+import { AlertComponent } from './alert/alert.component';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { MainGridComponent } from './main-grid/main-grid.component';
     RightSidebarComponent,
     ToggleRightSidebarDirective,
     DashboardFormComponent,
-    ToggleComponent
+    ToggleComponent,
+    AlertComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
