@@ -107,7 +107,11 @@ export class DashboardService {
   }
 
   createDashboard(name: string) {
-    this.dashArray.push({ name: name });
+    const newDash: Dashboard = {
+      name: name,
+      items: []
+    };
+    this.dashArray.push(newDash);
     this.dashboardsChanged.next(this.dashArray.slice());
   }
 
