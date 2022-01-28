@@ -5,7 +5,7 @@
     <mat-icon aria-hidden="false" aria-label="Add">add</mat-icon>
   </button>
   <!-- DELETE DASHBOARD -->
-  <button class="remove" type="button" (click)="onRemoveDashboard(index)">
+  <button class="remove" type="button" (click)="onConfirmDelete()">
     <mat-icon aria-hidden="false" aria-label="Remove">remove</mat-icon>
   </button>
   <!-- DASHBOARD LINKS, DISPLAYED WHEN OPEN -->
@@ -21,3 +21,17 @@
     </a>
   </div>
 </div>
+<!-- CONFIRMATION OF DELETE -->
+<app-confirm-delete
+  [confirmMsg]="confirm"
+  *ngIf="confirm"
+  [cancelDelete]="handleCloseMsg()"
+  [deleteDash]="onRemoveDashboard(index)">
+</app-confirm-delete>
+
+<!-- ALERT MODAL -->
+<app-alert
+  [alertMsg]="alert"
+  *ngIf="alert"
+  [closeMsg]="handleCloseMsg()">
+</app-alert>
