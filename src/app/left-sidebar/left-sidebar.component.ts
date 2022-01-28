@@ -32,7 +32,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
     this.cancelDashboardSub = this.dashboardService.cancelDelete.subscribe(didCancel => {
       this.dashDeleteCanceled = didCancel;
     });
-    this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(
+    this.deletedDashboardSub = this.dashboardService.deleteDash.subscribe(
       (dashboard) => {
       this.alert = 'Dashboard was successfully deleted!';
     });

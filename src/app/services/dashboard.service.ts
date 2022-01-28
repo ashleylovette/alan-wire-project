@@ -113,7 +113,7 @@ export class DashboardService {
   deleteDashboard(index: number) {
     if(index!== -1) {
       this.dashArray.splice(index, 1);
-      this.dashboardDeleted.next(this.dashArray[index]);
+      this.deleteDash.next(this.dashArray[index]);
       this.dashboardsChanged.next(this.dashArray.slice());
     }
   }
