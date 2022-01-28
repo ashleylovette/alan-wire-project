@@ -16,12 +16,12 @@ export class ToggleComponent implements OnInit {
   ngOnInit(): void {}
 
   leftToggle() {
-    this.leftOpen = !this.leftOpen;
     if (this.leftOpen) {
       document.getElementById('leftBar').className = 'hide';
     } else if (!this.leftOpen) {
       document.getElementById('leftBar').className = 'left-col';
     }
+    this.leftOpen = !this.leftOpen;
     this.leftToggleIcon();
   }
 
@@ -34,13 +34,13 @@ export class ToggleComponent implements OnInit {
   }
 
   rightToggle() {
-    this.rightOpen = !this.rightOpen;
     if (this.rightOpen) {
       document.getElementById('rightBar').className = 'hide';
     } else if (!this.rightOpen) {
       document.getElementById('rightBar').className = 'right-col';
-      this.rightToggleIcon();
     }
+    this.rightOpen = !this.rightOpen;
+    this.rightToggleIcon();
   }
 
   rightToggleIcon() {
