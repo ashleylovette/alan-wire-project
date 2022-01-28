@@ -5,7 +5,7 @@
 // Function to return ONLY the selected Dashboard's contents.
 // Function to Delete Selected Item from Selected Dashboard.
 
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 import { Subject } from 'rxjs';
@@ -17,6 +17,8 @@ export class DashboardService {
   dashboardDeleted = new Subject<object>();
   dashboardsChanged = new Subject<Dashboard[]>();
   dashboardSelected = new Subject<object>();
+  dashboardCleared = new EventEmitter<any>();
+  dashboardWasSelected: boolean;
   private dashArray: Dashboard[] = [
     {
       name: 'Test 1',
@@ -150,7 +152,7 @@ export class DashboardService {
     ),
   ];
 
-  // getDashboard() {
-  //   return this.dashboard.slice();
+  // clearDashboard() {
+  //   this.dashboardWasSelected = false;
   // }
 }

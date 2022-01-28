@@ -52,7 +52,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
       this.dashboardService.deleteDashboard(index);
   }
 
-  onDashboardSelected(dashboard, index: number) {
+  onDashboardSelected(dashboard: Dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
     this.index = index;
   }

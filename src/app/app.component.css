@@ -20,11 +20,9 @@
 .left-col {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid lightgray; */
   background-color: var(--field-color);
   width: 10%;
   left: 0;
-  /* margin-left: 2.5%; */
 }
 
 .dashboard-form {
@@ -35,7 +33,6 @@
 .center-col {
   display: flex;
   flex-direction: column;
-  /* background-color: aqua; */
   width: 100%;
 }
 
@@ -43,15 +40,6 @@
   display: flex;
   flex-direction: column;
   background-color: var(--field-color);
-  /* border: 2px solid lightgray; */
   width: 10%;
   right: 0;
-  /* margin-right: 2.5%; */
-}
-*/ toggle-left-sidebar {
-  transform: translateX(-100%);
-}
-
-.toggle-right-sidebar {
-  transform: translateX(100%);
 }
