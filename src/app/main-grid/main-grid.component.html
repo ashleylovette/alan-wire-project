@@ -1,4 +1,7 @@
-<div class="container-grid">
+<div *ngIf="!dashboardSelected">
+  <h2 class="text-center">Please select a dashboard!</h2>
+</div>
+<div class="container-grid" *ngIf="dashboardSelected">
   <!-- <h2>{{ selectedDashboard.name }}</h2> -->
   <!-- *ngFor loop, bind to individual dashboard item, bind to index -->
   <app-dashboard-item

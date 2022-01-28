@@ -18,7 +18,6 @@ import { DashboardFormComponent } from './dashboard-form/dashboard-form.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
-import { DashboardStartComponent } from './dashboard-start/dashboard-start.component';
 import { AlertComponent } from './alert/alert.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
@@ -37,7 +36,6 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     ToggleRightSidebarDirective,
     DashboardFormComponent,
     ToggleComponent,
-    DashboardStartComponent,
     AlertComponent,
     ConfirmDeleteComponent
   ],

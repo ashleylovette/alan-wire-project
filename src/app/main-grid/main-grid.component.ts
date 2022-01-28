@@ -17,6 +17,7 @@ export class MainGridComponent implements OnInit {
   selectedDashboard: Dashboard;
   @Input() id: number;
   selectDashboard = new Subscription;
+  dashboardSelected: boolean = false;
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -25,6 +26,7 @@ export class MainGridComponent implements OnInit {
     this.selectDashboard = this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
       this.selectedDashboard = dashboard;
       this.dashBoardItems = dashboard.items;
+      this.dashboardSelected = true;
     });
 
   }
