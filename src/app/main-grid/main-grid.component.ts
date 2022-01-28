@@ -2,7 +2,6 @@ import { DashboardService } from '../services/dashboard.service';
 import { DashboardItem } from './dashboard-item/dashboard-item.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Dashboard } from './dashboard.model';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 
@@ -16,23 +15,28 @@ export class MainGridComponent implements OnInit {
   name: string;
   selectedDashboard: Dashboard;
   @Input() id: number;
-  selectDashboard = new Subscription;
+  selectDashboardSub = new Subscription;
+  dashboardClearedSub = new Subscription;
   dashboardSelected: boolean = false;
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     // Get selected dashboard on init
-    this.selectDashboard = this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
+    this.selectDashboardSub = this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
       this.selectedDashboard = dashboard;
       this.dashBoardItems = dashboard.items;
       this.dashboardSelected = true;
     });
 
+    this.dashboardService.dashboardCleared.subscribe(()=> {
+      this.dashboardSelected = false;
+    })
   }
 
   ngOnDestroy() {
-    this.selectDashboard.unsubscribe();
+    this.selectDashboardSub.unsubscribe();
+    this.dashboardClearedSub.unsubscribe();
   }
 
 }

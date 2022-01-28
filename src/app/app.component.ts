@@ -18,7 +18,7 @@ ngOnInit(): void {
     this.addDashboard = !this.addDashboard;
   });
 
-  this.dashboardService.dashboardSelected.subscribe(dashboard => {
+  this.dashboardService.dashboardSelected.subscribe(() => {
     this.dashboardSelected = true;
   })
 }
