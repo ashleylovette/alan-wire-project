@@ -21,7 +21,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashDeleteCanceled: boolean = true;
   dashWasDeleted: boolean = false;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
@@ -46,13 +46,13 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   }
 
   onAddDashboard() {
-  this.dashboardService.addDashboard.next();
+    this.dashboardService.addDashboard.next();
   }
 
   onConfirmDelete() {
     this.confirm = 'Are you sure you want to delete the selected dashboard?';
-
   }
+  
   onRemoveDashboard(index) {
     if (this.dashDeleteCanceled) {
       this.confirm = null;
@@ -64,6 +64,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   onDashboardSelected(dashboard: Dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
     this.index = index;
+    this.dashboardService.deleteDashboard(index);
   }
 
   onCancel(boolean) {
@@ -72,5 +73,10 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
 
   handleCloseMsg() {
     this.alert = null;
+  }
+
+  onDashboardSelected(dashboard, i: number) {
+    this.dashboardService.dashboardSelected.next(dashboard);
+    this.dashboardService.currDashIdx = i;
   }
 }

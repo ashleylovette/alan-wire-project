@@ -10,17 +10,14 @@ import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardItemComponent } from './main-grid/dashboard-item/dashboard-item.component';
-import { ToggleSidebarDirective } from './toggle-left-sidebar.directive';
 import { SizeDirective } from './size.directive';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
-import { ToggleRightSidebarDirective } from './toggle-right-sidebar.directive';
 import { DashboardFormComponent } from './dashboard-form/dashboard-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleComponent } from './toggle/toggle.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
 import { AlertComponent } from './alert/alert.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
-
 
 @NgModule({
   declarations: [
@@ -30,14 +27,12 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     FooterComponent,
     HeaderComponent,
     DashboardItemComponent,
-    ToggleSidebarDirective,
     SizeDirective,
     RightSidebarComponent,
-    ToggleRightSidebarDirective,
     DashboardFormComponent,
     ToggleComponent,
     AlertComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +40,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
