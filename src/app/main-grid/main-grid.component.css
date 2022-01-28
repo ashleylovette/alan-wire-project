@@ -11,7 +11,6 @@
   display: flex;
   border: 2px solid black;
   max-width: fit-content;
-  /* justify-content: center; */
 }
 
 .small {
