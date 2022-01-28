@@ -25,11 +25,11 @@
 <app-confirm-delete
   [confirmMsg]="confirm"
   *ngIf="confirm"
-  [cancelDelete]="handleCloseMsg()"
+  [cancelDelete]="onCancel()"
   [deleteDash]="onRemoveDashboard(index)">
 </app-confirm-delete>
 
-<!-- ALERT MODAL -->
+<!-- ALERT MODAL, CONFIRM DELETE MSG-->
 <app-alert
   [alertMsg]="alert"
   *ngIf="alert"

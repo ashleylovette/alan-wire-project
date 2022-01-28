@@ -15,6 +15,8 @@ import { DashboardItemService } from './dashboard-item.service';
   providedIn: 'root',
 })
 export class DashboardService {
+  cancelDelete = new Subject<boolean>();
+  deleteDash = new Subject<Dashboard>();
   dashboardDeleted = new Subject<object>();
   dashboardsChanged = new Subject<Dashboard[]>();
   dashboardSelected = new Subject<object>();
@@ -118,8 +120,8 @@ export class DashboardService {
   deleteDashboard(index: number) {
     if (index !== -1) {
       this.dashArray.splice(index, 1);
+      this.deleteDash.next(this.dashArray[index]);
       this.dashboardsChanged.next(this.dashArray.slice());
-      this.dashboardDeleted.next(this.dashArray[index]);
     }
   }
 
