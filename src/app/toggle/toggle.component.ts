@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToggleComponent implements OnInit {
   leftOpen = true;
-  leftChevron: string = 'chevron_right';
+  leftChevron: string = 'chevron_left';
   rightOpen = true;
-  rightChevron: string = 'chevron_left';
+  rightChevron: string = 'chevron_right';
 
   constructor() {}
 

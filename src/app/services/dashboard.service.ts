@@ -112,12 +112,11 @@ export class DashboardService {
   }
 
   deleteDashboard(index: number) {
-    if(index!== -1) {
+    if (index !== -1) {
       this.dashArray.splice(index, 1);
       this.dashboardsChanged.next(this.dashArray.slice());
       this.dashboardDeleted.next(this.dashArray[index]);
     }
-
   }
 
   getName(index: number) {
@@ -135,30 +134,4 @@ export class DashboardService {
   deleteDashItem(index: number, item: number) {
     this.dashArray[index].items.splice(item, 1);
   }
-<<<<<<< Updated upstream
-
-  //This code can be removed once we can render and selected dashboard from the left sidebar.
-  private dashboard: DashboardItem[] = [
-    new DashboardItem(
-      'Test 1',
-      3,
-      'https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg'
-    ),
-    new DashboardItem(
-      'Test 2',
-      1,
-      'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg'
-    ),
-    new DashboardItem(
-      'Test Table',
-      2,
-      'https://blogs.sas.com/content/graphicallyspeaking/files/2014/12/graphTable-300x225.png'
-    ),
-  ];
-
-  // clearDashboard() {
-  //   this.dashboardWasSelected = false;
-  // }
-=======
->>>>>>> Stashed changes
 }

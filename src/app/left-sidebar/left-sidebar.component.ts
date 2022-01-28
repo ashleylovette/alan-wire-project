@@ -15,33 +15,24 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   private selectedDashboardSub: Subscription;
   index: number;
   dashboard: Dashboard;
-<<<<<<< Updated upstream
   alert: string;
   confirm: string;
-=======
->>>>>>> Stashed changes
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
-<<<<<<< Updated upstream
     this.dashboardSub = this.dashboardService.dashboardsChanged.subscribe(
-=======
-    this.dashboardService.dashboardsChanged.subscribe(
->>>>>>> Stashed changes
       (dashboard: Dashboard[]) => {
         this.dashArray = dashboard;
       }
     );
-<<<<<<< Updated upstream
+
     this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(
       (dashboard) => {
         this.alert = 'Dashboard was successfully deleted!';
       }
     );
-=======
->>>>>>> Stashed changes
   }
 
   ngOnDestroy(): void {
@@ -54,28 +45,20 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
     this.dashboardService.addDashboard.next();
   }
 
-<<<<<<< Updated upstream
   onConfirmDelete() {
     this.confirm = 'Are you sure you want to delete the selected dashboard?';
-
   }
   onRemoveDashboard(index) {
-      this.dashboardService.deleteDashboard(index);
-  }
-
-  onDashboardSelected(dashboard: Dashboard, index: number) {
-    this.dashboardService.dashboardSelected.next(dashboard);
-    this.index = index;
+    this.dashboardService.deleteDashboard(index);
   }
 
   handleCloseMsg() {
     this.alert = null;
     this.confirm = null;
   }
-=======
+
   onDashboardSelected(dashboard, i: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
     this.dashboardService.currDashIdx = i;
   }
->>>>>>> Stashed changes
 }
