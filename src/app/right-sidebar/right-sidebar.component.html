@@ -8,12 +8,13 @@
     <span
       *ngFor="let item of dashboardItems; let i = index"
       [item]="item"
-      [index]="i">
+      [index]="i"
+    >
       <a
         ><p>{{ item.name }}</p>
       </a>
-      <button class="add">
-        <mat-icon aria-hidden="false" aria-label="Add">add</mat-icon>
+      <button class="add" (click)="addItem(i)">
+        <mat-icon>add</mat-icon>
       </button>
     </span>
   </div>
