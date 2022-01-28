@@ -14,7 +14,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DashboardService {
-  dashbrdSelected = new Subject<Dashboard>();
+  dashboardDeleted = new Subject<object>();
   dashboardsChanged = new Subject<Dashboard[]>();
   dashboardSelected = new Subject<object>();
   private dashArray: Dashboard[] = [
@@ -110,6 +110,7 @@ export class DashboardService {
     if(index!== -1) {
       this.dashArray.splice(index, 1);
       this.dashboardsChanged.next(this.dashArray.slice());
+      this.dashboardDeleted.next(this.dashArray[index]);
     }
 
   }
