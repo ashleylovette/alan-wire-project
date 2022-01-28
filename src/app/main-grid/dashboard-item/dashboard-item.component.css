@@ -5,7 +5,7 @@
 .head {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   background-color: var(--aw-blue);
   align-items: center;
 }
