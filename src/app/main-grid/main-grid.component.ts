@@ -41,6 +41,10 @@ export class MainGridComponent implements OnInit {
         this.dashBoardItems = dashboard.items;
       }
     );
+
+    this.dashboardService.dashboardDeleted.subscribe(() => {
+      this.dashboardSelected = false;
+    });
   }
 
   ngOnDestroy() {
