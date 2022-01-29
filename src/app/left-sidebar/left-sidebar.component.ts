@@ -65,7 +65,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
 
   onRemoveDashboard(index) {
     this.dashboardService.deleteDashboard(index);
-    this.dashboardService.getArray();
+    // this.dashboardService.getArray();
     this.dashboardService.dashboardsChanged.next(this.dashArray);
 
   }
