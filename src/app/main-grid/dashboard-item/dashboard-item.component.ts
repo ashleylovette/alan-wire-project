@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { DashboardService } from 'src/app/services/dashboard.service';
 import { DashboardItem } from './dashboard-item.model';
 
 @Component({
@@ -11,8 +12,12 @@ export class DashboardItemComponent implements OnInit {
     @Input() dbItem: DashboardItem;
     @Input() index: number;
 
-  constructor() {}
+  constructor(private dashService: DashboardService) {}
 
   ngOnInit() {
+  }
+
+  onDelete() {
+    this.dashService.deleteDashItem(this.index);
   }
 }
