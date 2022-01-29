@@ -59,7 +59,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   onConfirmDelete() {
     this.confirm = true;
 
-    // this.dashboardService.dashboardsChanged.next(this.dashArray);
+    this.dashboardService.dashboardsChanged.next(this.dashArray);
     // this.dashboardService.getArray();
   }
 
@@ -72,6 +72,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
 
   onDashboardSelected(dashboard: Dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
+    this.dashboardService.currDashIdx = index;
     this.index = index;
   }
 
@@ -83,8 +84,4 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   //   console.log('closed');
   // }
 
-  // onDashboardSelected(dashboard, i: number) {
-  //   this.dashboardService.dashboardSelected.next(dashboard);
-  //   this.dashboardService.currDashIdx = i;
-  // }
 }

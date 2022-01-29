@@ -1,7 +1,7 @@
 <a class="item">
   <div class="head">
     <p>{{ dbItem.name }}</p>
-    <mat-icon aria-hidden="false" aria-label="Refresh">settings</mat-icon>
+    <mat-icon (click)="onDelete()">delete</mat-icon>
   </div>
   <div class="body">
     <img src="{{ dbItem.imgPath }}" />

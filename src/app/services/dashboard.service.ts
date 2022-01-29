@@ -138,7 +138,7 @@ export class DashboardService {
     this.dashArray[this.currDashIdx].items.push(dashItem);
   }
 
-  deleteDashItem(index: number, item: number) {
-    this.dashArray[index].items.splice(item, 1);
+  deleteDashItem(currItemIdx: number) {
+    this.dashArray[this.currDashIdx].items.splice(currItemIdx, 1);
   }
 }
