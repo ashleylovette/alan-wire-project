@@ -52,3 +52,11 @@ mat-icon:hover {
   cursor: pointer;
   align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .mat-icon.notranslate.material-icons.mat-icon-no-color {
+    margin-left: 20%;
+  }
+}
+
