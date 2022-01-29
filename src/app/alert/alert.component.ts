@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-alert',
@@ -6,15 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent implements OnInit {
-  @Input()alertMsg: string;
-  @Output()closeMsg = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
   }
 
   onCloseMsg() {
-    this.closeMsg.emit();
+    this.dashboardService.messageCleared.emit();
   }
 }

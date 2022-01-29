@@ -23,15 +23,13 @@
 </div>
 <!-- CONFIRMATION OF DELETE -->
 <app-confirm-delete
-  [confirmMsg]="confirm"
   *ngIf="confirm"
   [cancelDelete]="onCancel()"
-  [deleteDash]="onRemoveDashboard(index)">
+  [deleteDash]="onRemoveDashboard(index)"
+>
 </app-confirm-delete>
 
 <!-- ALERT MODAL, CONFIRM DELETE MSG-->
-<app-alert
-  [alertMsg]="alert"
-  *ngIf="alert"
-  [closeMsg]="handleCloseMsg()">
-</app-alert>
+<!-- [alertMsg]="alert" -->
+<!-- [closeMsg]="handleCloseMsg()" -->
+<app-alert *ngIf="dashWasDeleted"> </app-alert>

@@ -9,7 +9,6 @@ import { DashboardService } from '../services/dashboard.service';
   styleUrls: ['./confirm-delete.component.css']
 })
 export class ConfirmDeleteComponent implements OnInit {
-  @Input()confirmMsg: string;
 
   constructor(private dashboardService: DashboardService) { }
 
