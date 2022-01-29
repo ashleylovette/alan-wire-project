@@ -43,3 +43,38 @@
   width: 10%;
   right: 0;
 }
+
+ @media only screen and (max-width: 600px) {
+
+  .left-col {
+    width: 35%;
+  }
+
+  .right-col {
+    width: 35%;
+  }
+
+  .header-container {
+    align-content: center;
+  }
+}
+ button.add mat-icon {
+  font-size: 16px;
+}
+/*
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+
+@media only screen and (orientation: landscape) {
+
+} */
+
