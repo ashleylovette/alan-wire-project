@@ -10,35 +10,46 @@ import { DashboardService } from '../services/dashboard.service';
 })
 export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashArray: Dashboard[];
-  private dashboardSub: Subscription;
+  private dashboardChangedSub: Subscription;
   private deletedDashboardSub: Subscription;
   private selectedDashboardSub: Subscription;
+  // private cancelDashboardSub: Subscription;
   index: number;
-  dashboard: Dashboard;
-  alert: string;
-  confirm: string;
+  // dashboards: Dashboard;
+  // alert: string;
+  confirm: boolean = false;
+  // dashDeleteCanceled: boolean = true;
+  dashWasDeleted: boolean = false;
+  messageClearedSub: Subscription;
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     this.dashArray = this.dashboardService.getArray();
-    this.dashboardSub = this.dashboardService.dashboardsChanged.subscribe(
-      (dashboard: Dashboard[]) => {
-        this.dashArray = dashboard;
-      }
-    );
 
-    this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(
-      (dashboard) => {
-        this.alert = 'Dashboard was successfully deleted!';
-      }
-    );
+    this.dashboardChangedSub = this.dashboardService.dashboardsChanged.subscribe(
+      (dashboards: Dashboard[]) => {
+          this.dashArray = dashboards;
+        });
+
+    // this.cancelDashboardSub = this.dashboardService.cancelDelete.subscribe(didCancel => {
+    //   this.dashDeleteCanceled = didCancel;
+    // });
+
+    this.deletedDashboardSub = this.dashboardService.deleteDash.subscribe(() => {
+      this.dashWasDeleted = true;
+    });
+    this.messageClearedSub = this.dashboardService.messageCleared.subscribe(() => {
+      this.dashWasDeleted = false;
+    })
   }
 
   ngOnDestroy(): void {
-    this.dashboardSub.unsubscribe();
+    this.dashboardChangedSub.unsubscribe();
     this.deletedDashboardSub.unsubscribe();
     this.selectedDashboardSub.unsubscribe();
+    // this.cancelDashboardSub.unsubscribe();
+    this.messageClearedSub.unsubscribe();
   }
 
   onAddDashboard() {
@@ -46,19 +57,31 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   }
 
   onConfirmDelete() {
-    this.confirm = 'Are you sure you want to delete the selected dashboard?';
+    this.confirm = true;
+
+    this.dashboardService.dashboardsChanged.next(this.dashArray);
+    // this.dashboardService.getArray();
   }
+
   onRemoveDashboard(index) {
     this.dashboardService.deleteDashboard(index);
+    // this.dashboardService.getArray();
+    this.dashboardService.dashboardsChanged.next(this.dashArray);
+
   }
 
-  handleCloseMsg() {
-    this.alert = null;
-    this.confirm = null;
-  }
-
-  onDashboardSelected(dashboard, i: number) {
+  onDashboardSelected(dashboard: Dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
-    this.dashboardService.currDashIdx = i;
+    this.dashboardService.currDashIdx = index;
+    this.index = index;
   }
+
+  onCancel() {
+    this.confirm = false;
+  }
+
+  // handleCloseMsg() {
+  //   console.log('closed');
+  // }
+
 }

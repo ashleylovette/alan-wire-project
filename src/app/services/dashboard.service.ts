@@ -15,12 +15,15 @@ import { DashboardItemService } from './dashboard-item.service';
   providedIn: 'root',
 })
 export class DashboardService {
+  cancelDelete = new Subject<boolean>();
+  deleteDash = new Subject<Dashboard>();
   dashboardDeleted = new Subject<object>();
   dashboardsChanged = new Subject<Dashboard[]>();
   dashboardSelected = new Subject<object>();
   dashboardCleared = new EventEmitter<any>();
   dashboardWasSelected: boolean;
   currDashIdx: number;
+  messageCleared = new EventEmitter<any>();
 
   private dashArray: Dashboard[] = [
     {
@@ -107,19 +110,19 @@ export class DashboardService {
   }
 
   createDashboard(name: string) {
-    const newdash: Dashboard = {
+    const newDash: Dashboard = {
       name: name,
       items: [],
     };
-    this.dashArray.push(newdash);
+    this.dashArray.push(newDash);
     this.dashboardsChanged.next(this.dashArray.slice());
   }
 
   deleteDashboard(index: number) {
     if (index !== -1) {
       this.dashArray.splice(index, 1);
+      this.deleteDash.next(this.dashArray[index]);
       this.dashboardsChanged.next(this.dashArray.slice());
-      this.dashboardDeleted.next(this.dashArray[index]);
     }
   }
 
@@ -135,7 +138,7 @@ export class DashboardService {
     this.dashArray[this.currDashIdx].items.push(dashItem);
   }
 
-  deleteDashItem(index: number, item: number) {
-    this.dashArray[index].items.splice(item, 1);
+  deleteDashItem(currItemIdx: number) {
+    this.dashArray[this.currDashIdx].items.splice(currItemIdx, 1);
   }
 }

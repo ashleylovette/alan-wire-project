@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import { Dashboard } from '../main-grid/dashboard.model';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-confirm-delete',
@@ -6,20 +9,20 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./confirm-delete.component.css']
 })
 export class ConfirmDeleteComponent implements OnInit {
-  @Input()confirmMsg: string;
-  @Output()cancelDelete = new EventEmitter<void>();
-  @Output()deleteDash = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+  }
+
   onCancel() {
-    this.cancelDelete.emit();
+    this.dashboardService.cancelDelete.next(true);
   }
 
   onDeleteDash() {
-    this.deleteDash.emit();
+    this.dashboardService.deleteDash.next(Dashboard);
   }
 }
