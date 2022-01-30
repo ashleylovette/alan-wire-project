@@ -14,6 +14,6 @@ export class AlertComponent implements OnInit {
   }
 
   onCloseMsg() {
-    this.dashboardService.messageCleared.emit();
+    this.dashboardService.dashboardCleared.emit();
   }
 }

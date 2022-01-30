@@ -24,5 +24,7 @@ export class ConfirmDeleteComponent implements OnInit {
   onDeleteDash() {
     this.dashboardService.deleteDashboard(this.index);
     this.dashboardService.dashboardDeleted.emit();
+
+    this.dashboardService.dashboardCleared.emit();
   }
 }
