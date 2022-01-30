@@ -12,7 +12,6 @@ export class ConfirmDeleteComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
-    console.log(this.index);
   }
 
   ngOnDestroy(): void {
