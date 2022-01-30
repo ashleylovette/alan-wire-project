@@ -23,7 +23,6 @@ export class DashboardService {
   dashboardCleared = new EventEmitter<any>();
   dashboardWasSelected: boolean;
   currDashIdx: number;
-  messageCleared = new EventEmitter<any>();
 
   private dashArray: Dashboard[] = [
     {
