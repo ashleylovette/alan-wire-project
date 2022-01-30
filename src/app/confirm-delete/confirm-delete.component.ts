@@ -19,10 +19,11 @@ export class ConfirmDeleteComponent implements OnInit {
   }
 
   onCancel() {
-    this.dashboardService.cancelDelete.next(true);
+    this.dashboardService.dashboardCleared.emit();
   }
 
   onDeleteDash() {
     this.dashboardService.deleteDash.next(Dashboard);
+    this.dashboardService.dashboardCleared.emit();
   }
 }
