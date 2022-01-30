@@ -27,22 +27,22 @@ export class DashboardService {
 
   private dashArray: Dashboard[] = [
     {
-      name: 'Test 1',
+      name: 'Financial Reports',
       items: [
         {
-          name: 'Graph 1',
+          name: 'Financial Estimates',
           size: 3,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
         },
         {
-          name: 'Graph 2',
+          name: 'Production Estimates',
           size: 1,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
         },
         {
-          name: 'Graph 3',
+          name: 'Sales Estimates',
           size: 2,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
@@ -50,22 +50,22 @@ export class DashboardService {
       ],
     },
     {
-      name: 'Test 2',
+      name: 'Production Reports',
       items: [
         {
-          name: 'Graph 2',
+          name: 'Production Estimates',
           size: 1,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
         },
         {
-          name: 'Graph 3',
+          name: 'Sales Estimates',
           size: 2,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
         },
         {
-          name: 'Graph 1',
+          name: 'Financial Estimates',
           size: 3,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
@@ -73,22 +73,22 @@ export class DashboardService {
       ],
     },
     {
-      name: 'Test 3',
+      name: 'Sales Reports',
       items: [
         {
-          name: 'Graph 3',
+          name: 'Sales Estimates',
           size: 2,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
         },
         {
-          name: 'Graph 2',
+          name: 'Production Estimates',
           size: 1,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
         },
         {
-          name: 'Graph 1',
+          name: 'Financial Estimates',
           size: 3,
           imgPath:
             'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',

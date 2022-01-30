@@ -7,19 +7,19 @@ import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model'
 export class DashboardItemService {
   private dashItems: DashboardItem[] = [
     {
-      name: 'Graph 1',
+      name: 'Financial Estimates',
       size: 3,
       imgPath:
         'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
     },
     {
-      name: 'Graph 2',
+      name: 'Production Estimates',
       size: 1,
       imgPath:
         'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
     },
     {
-      name: 'Graph 3',
+      name: 'Sales Estimates',
       size: 2,
       imgPath:
         'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
