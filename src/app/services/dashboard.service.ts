@@ -15,9 +15,9 @@ import { DashboardItemService } from './dashboard-item.service';
   providedIn: 'root',
 })
 export class DashboardService {
-  cancelDelete = new Subject<boolean>();
+  cancelDelete = new EventEmitter();
   deleteDash = new Subject<Dashboard>();
-  dashboardDeleted = new Subject<object>();
+  dashboardDeleted = new EventEmitter();
   dashboardsChanged = new Subject<Dashboard[]>();
   dashboardSelected = new Subject<object>();
   dashboardCleared = new EventEmitter<any>();
