@@ -3,11 +3,11 @@
     <mat-icon aria-hidden="false" aria-label="Home" (click)="onHome()"
       >home</mat-icon
     >
-    <mat-icon aria-hidden="false" aria-label="Refresh">refresh</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Refresh" (click)="onHome()">refresh</mat-icon>
     <h1 class="title">{{ pageTitle }}</h1>
   </div>
   <div class="right-icons">
-    <mat-icon aria-hidden="false" aria-label="Exit">highlight_off</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Exit" (click)="onExit()">highlight_off</mat-icon>
     <!-- <img src="../../assets/icons/2561211_circle_x_icon.svg" alt="" /> -->
   </div>
 </div>

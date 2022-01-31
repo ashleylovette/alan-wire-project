@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
 
@@ -10,6 +10,7 @@ import { DashboardService } from '../services/dashboard.service';
 export class HeaderComponent implements OnInit {
   pageTitle: String = 'Alan Wire';
   dashboard: Dashboard;
+  @Output()exitPage = new EventEmitter<any>();
 
   constructor( private dashboardService: DashboardService) {}
 
@@ -23,5 +24,9 @@ export class HeaderComponent implements OnInit {
     this.dashboardService.dashboardCleared.emit();
     this.pageTitle = 'Alan Wire';
     this.dashboard = null;
+  }
+
+  onExit() {
+    this.exitPage.emit();
   }
 }

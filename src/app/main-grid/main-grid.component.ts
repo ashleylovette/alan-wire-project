@@ -1,6 +1,6 @@
 import { DashboardService } from '../services/dashboard.service';
 import { DashboardItem } from './dashboard-item/dashboard-item.model';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dashboard } from './dashboard.model';
 import { Subscription } from 'rxjs';
 
@@ -18,6 +18,7 @@ export class MainGridComponent implements OnInit {
   dashboardClearedSub = new Subscription();
   dashboardSelected: boolean = false;
   selectDashboard = new Subscription();
+  exit: boolean = false;
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -51,4 +52,9 @@ export class MainGridComponent implements OnInit {
     this.selectDashboardSub.unsubscribe();
     this.dashboardClearedSub.unsubscribe();
   }
+
+  onExitPage() {
+    this.exit = true;
+  }
+
 }
