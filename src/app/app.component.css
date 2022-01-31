@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--field-color);
-  width: 10%;
+  width: 18%;
   left: 0;
 }
 
@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--field-color);
-  width: 10%;
+  width: 19%;
   right: 0;
 }
 

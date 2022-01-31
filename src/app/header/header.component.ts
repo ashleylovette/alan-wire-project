@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
       this.pageTitle = dashboard.name;
+    });
+    this.dashboardService.dashboardDeleted.subscribe(() => {
+      this.pageTitle = 'Alan Wire';
     })
   }
 
