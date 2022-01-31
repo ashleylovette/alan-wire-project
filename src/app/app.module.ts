@@ -16,6 +16,7 @@ import { ToggleComponent } from './toggle/toggle.component';
 import { MainGridComponent } from './main-grid/main-grid.component';
 import { AlertComponent } from './left-sidebar/alert/alert.component';
 import { ConfirmDeleteComponent } from './left-sidebar/confirm-delete/confirm-delete.component';
+import { ExitComponent } from './exit/exit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ConfirmDeleteComponent } from './left-sidebar/confirm-delete/confirm-de
     ToggleComponent,
     AlertComponent,
     ConfirmDeleteComponent,
+    ExitComponent,
   ],
   imports: [
     BrowserModule,
