@@ -1,0 +1,103 @@
+#loginPage {
+  /* grid is setting the keeps formatting */
+  /* display: none; */
+}
+
+.btn-login {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: medium;
+  background-color: #cae9ff;
+  border: .5px solid black;
+  border-radius: 3px;
+  font-family: Notosans, Roboto, alanwire;
+}
+
+.buttonContainer-login {
+  display: flex;
+  justify-content: right;
+  margin-top: 15px;
+}
+
+
+
+.centerPage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+  place-items: center;
+  height: 98vh;
+  width: 98vw;
+}
+
+#loginErrorMessage {
+  color: red;
+  display: flex;
+  justify-content: center;
+  font-family: Notosans, Roboto, alanwire;
+}
+
+.inputField {
+  font-size: medium;
+  /* margin: 1px; */
+  width: 100%;
+  font-family: Notosans, Roboto, alanwire;
+  /* padding: 3px; */
+}
+
+.inputDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.idLabel {
+  display: flex;
+  justify-content: center;
+  margin: 3px;
+  font-family: Notosans, Roboto, alanwire;
+}
+
+.logoDiv {
+  display:flex;
+  justify-content: center;
+  font-family: Notosans, Roboto, alanwire;
+}
+
+.loginCenterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.welcomeMessage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 25px;
+  color: #77c2f7;
+  margin-bottom: 10px;
+}
+
+#loginBox {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .centerPage {
+      grid-template-rows: 1fr 3fr;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .centerPage {
+      grid-template-rows: 1fr 5fr;
+  }
+
+}

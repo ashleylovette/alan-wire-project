@@ -17,6 +17,7 @@ import { MainGridComponent } from './main-grid/main-grid.component';
 import { AlertComponent } from './left-sidebar/alert/alert.component';
 import { ConfirmDeleteComponent } from './left-sidebar/confirm-delete/confirm-delete.component';
 import { ExitComponent } from './exit/exit.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ExitComponent } from './exit/exit.component';
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
