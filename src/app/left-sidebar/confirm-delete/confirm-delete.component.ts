@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { Dashboard } from '../main-grid/dashboard.model';
-import { DashboardService } from '../services/dashboard.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-confirm-delete',
@@ -9,6 +7,7 @@ import { DashboardService } from '../services/dashboard.service';
   styleUrls: ['./confirm-delete.component.css']
 })
 export class ConfirmDeleteComponent implements OnInit {
+  @Input() index: number;
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -19,10 +18,11 @@ export class ConfirmDeleteComponent implements OnInit {
   }
 
   onCancel() {
-    this.dashboardService.cancelDelete.next(true);
+    this.dashboardService.cancelDelete.emit();
   }
 
   onDeleteDash() {
-    this.dashboardService.deleteDash.next(Dashboard);
+    this.dashboardService.deleteDashboard(this.index);
+    this.dashboardService.dashboardDeleted.emit();
   }
 }

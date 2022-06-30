@@ -1,4 +1,4 @@
-<div *ngIf="!dashboardSelected">
+<div *ngIf="!dashboardSelected && !exit">
   <h2 class="text-center">Please select a dashboard!</h2>
 </div>
 <div class="container-grid" *ngIf="dashboardSelected">
@@ -9,6 +9,7 @@
     *ngFor="let item of dashBoardItems; let i = index"
     [dbItem]="item"
     [index]="i"
-    appSize
-  ></app-dashboard-item>
+    appSize></app-dashboard-item>
 </div>
+
+<app-exit (exitPage)="onExitPage()" *ngIf="exit && !dashboardSelected"></app-exit>

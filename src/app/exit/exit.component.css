@@ -1,0 +1,12 @@
+.container {
+  background-color: var(--aw-blue);
+  align-items: center;
+}
+
+.h6 {
+  color: var(--text-color);
+}
+
+.p {
+  color: var(--text-color);
+}
