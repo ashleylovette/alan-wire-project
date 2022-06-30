@@ -17,6 +17,9 @@ import { MainGridComponent } from './main-grid/main-grid.component';
 import { AlertComponent } from './left-sidebar/alert/alert.component';
 import { ConfirmDeleteComponent } from './left-sidebar/confirm-delete/confirm-delete.component';
 import { ExitComponent } from './exit/exit.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { ExitComponent } from './exit/exit.component';
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,8 @@ import { ExitComponent } from './exit/exit.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
