@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
 
@@ -10,9 +11,11 @@ import { DashboardService } from '../services/dashboard.service';
 export class HeaderComponent implements OnInit {
   pageTitle: String = 'Alan Wire';
   dashboard: Dashboard;
+
   @Output()exitPage = new EventEmitter<any>();
 
-  constructor( private dashboardService: DashboardService) {}
+  constructor( private dashboardService: DashboardService, private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.dashboardService.dashboardSelected.subscribe((dashboard: Dashboard) => {
@@ -31,5 +34,9 @@ export class HeaderComponent implements OnInit {
 
   onExit() {
     this.exitPage.emit();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

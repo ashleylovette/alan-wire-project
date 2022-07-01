@@ -23,15 +23,12 @@ interface AuthResponseData {
 export class AuthService {
   private tokenExpirationTimer: any;
   user = new BehaviorSubject<User | null>(null)
+  apiUrl = `http://localhost:3000/api/v1/users`
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('http://localhost:3000/api/v1/users/login',
-    {
-      email: email,
-      password: password,
-    })
+  login(form) {
+    return this.http.post<AuthResponseData>(this.apiUrl + '/login', form)
     .pipe(
       map((res: any) => {
         const user = res;
@@ -84,15 +81,30 @@ export class AuthService {
   //   }
   // }
 
+  // logout() {
+  //   // this.user.next(null);
+  //   // this.router.navigate(['/login']);
+  //   // localStorage.removeItem('Bearer');
+  //   // if (this.tokenExpirationTimer) {
+  //   //   clearTimeout(this.tokenExpirationTimer);
+  //   // }
+  //   // this.tokenExpirationTimer = null;
+
+  // }
+
   logout() {
-    this.user.next(null);
-    this.router.navigate(['/login']);
-    localStorage.removeItem('userData');
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-    this.tokenExpirationTimer = null;
+    return this.http
+      .delete(this.apiUrl + '/logout')
+      .subscribe((res: any) => {
+        const loggedOut = res;
+        if (loggedOut.success) {
+          console.log(res);
+          this.user.next(null);
+          this.router.navigate(['/login']);
+        }
+      });
   }
+
 
   // autoLogout(expirationDuration: number) {
   //   this.tokenExpirationTimer = setTimeout(() => {
