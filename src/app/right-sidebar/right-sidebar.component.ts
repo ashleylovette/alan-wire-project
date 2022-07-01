@@ -22,7 +22,7 @@ export class RightSidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.dashboardItems = this.dashItemsService.getDashItems();
+    this.dashboardItems = this.dashboardService.getDashboardItems();
     this.selectedDashboard =
       this.dashboardService.dashboardSelected.subscribe();
   }

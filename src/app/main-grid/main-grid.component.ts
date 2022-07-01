@@ -24,6 +24,7 @@ export class MainGridComponent implements OnInit {
 
   ngOnInit() {
     // Get selected dashboard on init
+
     this.selectDashboardSub = this.dashboardService.dashboardSelected.subscribe(
       (dashboard: Dashboard) => {
         this.selectedDashboard = dashboard;
