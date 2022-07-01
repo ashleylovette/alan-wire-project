@@ -13,6 +13,14 @@
   font-family: Notosans, Roboto, alanwire;
 }
 
+/* .btn-login:disabled {
+  cursor: not-allowed;
+}
+
+.btn-login:enabled {
+  cursor: pointer;
+} */
+
 .buttonContainer-login {
   display: flex;
   justify-content: right;
@@ -83,7 +91,7 @@
   margin-bottom: 10px;
 }
 
-#loginBox {
+.loginBox {
   border: 2px solid black;
   border-radius: 5px;
   padding: 10px 20px;
