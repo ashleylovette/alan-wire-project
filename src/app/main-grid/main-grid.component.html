@@ -9,7 +9,10 @@
     *ngFor="let item of dashBoardItems; let i = index"
     [dbItem]="item"
     [index]="i"
-    appSize></app-dashboard-item>
+  ></app-dashboard-item>
 </div>
 
-<app-exit (exitPage)="onExitPage()" *ngIf="exit && !dashboardSelected"></app-exit>
+<app-exit
+  (exitPage)="onExitPage()"
+  *ngIf="exit && !dashboardSelected"
+></app-exit>
