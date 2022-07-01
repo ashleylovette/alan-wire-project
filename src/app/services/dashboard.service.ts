@@ -24,77 +24,7 @@ export class DashboardService {
   dashboardWasSelected: boolean;
   currDashIdx: number;
 
-  private dashArray: Dashboard[] = [
-    {
-      name: 'Financial Reports',
-      items: [
-        {
-          name: 'Financial Estimates',
-          size: 3,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
-        },
-        {
-          name: 'Production Estimates',
-          size: 1,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
-        },
-        {
-          name: 'Sales Estimates',
-          size: 2,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
-        },
-      ],
-    },
-    {
-      name: 'Production Reports',
-      items: [
-        {
-          name: 'Production Estimates',
-          size: 1,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
-        },
-        {
-          name: 'Sales Estimates',
-          size: 2,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
-        },
-        {
-          name: 'Financial Estimates',
-          size: 3,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
-        },
-      ],
-    },
-    {
-      name: 'Sales Reports',
-      items: [
-        {
-          name: 'Sales Estimates',
-          size: 2,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/types-of-graphs-bar-graph.jpg',
-        },
-        {
-          name: 'Production Estimates',
-          size: 1,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/bar-and-line-graph-1.jpg',
-        },
-        {
-          name: 'Financial Estimates',
-          size: 3,
-          imgPath:
-            'https://cdn.corporatefinanceinstitute.com/assets/waterfall-chart-2.jpg',
-        },
-      ],
-    },
-  ];
+  private dashArray: Dashboard[] = [];
 
   addDashboard = new Subject<void>();
 
@@ -111,7 +41,7 @@ export class DashboardService {
   createDashboard(name: string) {
     const newDash: Dashboard = {
       name: name,
-      items: []
+      items: [],
     };
     this.dashArray.push(newDash);
     this.dashboardsChanged.next(this.dashArray.slice());
