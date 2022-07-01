@@ -1,18 +1,20 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 import { User } from './user.model';
-import { throwError, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 interface AuthResponseData {
-  idToken: string;
+  id: number;
   email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-  registered: boolean;
+  first_name: string;
+  last_name: string;
+  name: string;
+  token: {
+    expiry: Date;
+    value: string;
+  }
 }
 
 @Injectable({
@@ -20,56 +22,67 @@ interface AuthResponseData {
 })
 export class AuthService {
   private tokenExpirationTimer: any;
-  user = new BehaviorSubject<User>(null)
+  user = new BehaviorSubject<User | null>(null)
 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('localhost:3000/api/v1/users/login' + environment.rubyBackend.API_KEY,
+    return this.http.post<AuthResponseData>('http://localhost:3000/api/v1/users/login',
     {
       email: email,
       password: password,
-      returnSecureToken: true
     })
     .pipe(
-      catchError(this.handleError),
-      tap((resData: AuthResponseData) => {
-        this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
-        );
-      })
-    );;
+      map((res: any) => {
+        const user = res;
+        // console.log(user);
+        if (user.success) {
+          console.log("success", user)
+          localStorage.setItem('Bearer', user.payload.token.value);
+          // console.log(localStorage)
+          const newUser = new User(
+            user.payload.user.id,
+            user.payload.user.email,
+            user.payload.token.value,
+            user.payload.token.expiry,
+            user.payload.user.first_name,
+            user.payload.user.last_name
+          );
+          console.log(newUser)
+          console.log(this.user)
+          this.user.next(newUser);
+        }
+      }
+    ));
   }
 
-  autoLogin() {
-    const userData: {
-      email: string;
-      id: string;
-      _token: string;
-      _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if (!userData) {
-      return;
-    }
+  // autoLogin() {
+  //   const userData: {
+  //     email: string;
+  //     id: string;
+  //     _token: string;
+  //     _tokenExpirationDate: string;
+  //   } = JSON.parse(localStorage.getItem('userData'));
+  //   if (!userData) {
+  //     return;
+  //   }
 
-    const loadedUser = new User(
-      userData.email,
-      userData.id,
-      userData._token,
-      new Date(userData._tokenExpirationDate)
-      );
+  //   const loadedUser = new User(
+  //     userData.id,
+  //     userData.email,
+  //     userData.first_name,
+  //     userData._token,
+  //     new Date(userData._tokenExpirationDate)
+  //     );
 
-    if (loadedUser.token) {
-      this.user.next(loadedUser);
-      const expirationDuration =
-        new Date(userData._tokenExpirationDate).getTime() -
-        new Date().getTime();
-      this.autoLogout(expirationDuration)
-    }
-  }
+  //   if (loadedUser.token) {
+  //     this.user.next(loadedUser);
+  //     const expirationDuration =
+  //       new Date(userData._tokenExpirationDate).getTime() -
+  //       new Date().getTime();
+  //     this.autoLogout(expirationDuration)
+  //   }
+  // }
 
   logout() {
     this.user.next(null);
@@ -81,44 +94,49 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-  autoLogout(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
-  }
+  // autoLogout(expirationDuration: number) {
+  //   this.tokenExpirationTimer = setTimeout(() => {
+  //     this.logout();
+  //   }, expirationDuration);
+  // }
 
 
-  //error handling function
-  private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An error occured!';
-    if (!errorRes.error || !errorRes.error.error) {
-      //previous recommendation was to return throwError from rxjs but it has been deprecated
-      return throwError(() => new Error(errorMessage));
-    }
-      switch (errorRes.error.error.message) {
-        case 'EMAIL_NOT_FOUND':
-          errorMessage = 'This email not found';
-          break;
-        case 'INVALID_PASSWORD':
-          errorMessage = 'Invalid password';
-          break;
-        case 'THIS_USER_DISABLED':
-          errorMessage = 'This user has been disabled by an adminstrator';
-      }
-      return throwError(() => new Error(errorMessage));
-    }
+  // //error handling function
+  // private handleError(errorRes: HttpErrorResponse) {
+  //   let errorMessage = 'An error occured!';
+  //   if (!errorRes.error || !errorRes.error.error) {
+  //     //previous recommendation was to return throwError from rxjs but it has been deprecated
+  //     return throwError(() => new Error(errorMessage));
+  //   }
+  //     switch (errorRes.error.error.message) {
+  //       case 'EMAIL_NOT_FOUND':
+  //         errorMessage = 'This email not found';
+  //         break;
+  //       case 'INVALID_PASSWORD':
+  //         errorMessage = 'Invalid password';
+  //         break;
+  //       case 'THIS_USER_DISABLED':
+  //         errorMessage = 'This user has been disabled by an adminstrator';
+  //     }
+  //     return throwError(() => new Error(errorMessage));
+  //   }
 
-     //authentication handling function
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number
-    ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    this.user.next(user);
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
+  //    //authentication handling function
+  // private handleAuthentication(
+  //   id: number,
+  //   email: string,
+  //   first_name: string,
+  //   last_name: string,
+  //   name: string,
+  //   token: {
+  //     expiry: Date,
+  //     value: string,
+  //   }
+  //   ) {
+  //   // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+  //   const user = new User(email, first_name, last_name, token.value, token.expiry);
+  //   this.user.next(user);
+  //   localStorage.setItem('userData', JSON.stringify(user));
+  // }
 
 }

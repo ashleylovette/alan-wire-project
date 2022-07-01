@@ -1,9 +1,12 @@
 export class User {
   constructor(
+    public id: number,
     public email: string,
-    public id: string,
     private _token: string,
-    private _tokenExpirationDate: Date
+    private _tokenExpirationDate: Date,
+    public first_name?: string,
+    public last_name?: string
+
     ) {}
 
     //this is a getter, not a setter
