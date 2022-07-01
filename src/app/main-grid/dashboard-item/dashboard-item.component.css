@@ -1,6 +1,4 @@
-/* .item {
-  border-color: 1px solid black;
-} */
+/*
 
 .head {
   display: flex;
@@ -30,4 +28,13 @@ mat-icon:hover {
 img {
   height: 100%;
   width: 100%;
+} */
+
+.card-header {
+  background-color: rgb(235, 112, 112);
+  color: white;
+}
+
+.card-text {
+  padding: 0.5rem;
 }
