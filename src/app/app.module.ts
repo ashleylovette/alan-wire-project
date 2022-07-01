@@ -20,6 +20,7 @@ import { ExitComponent } from './exit/exit.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
     ConfirmDeleteComponent,
     ExitComponent,
     HomeComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

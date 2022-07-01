@@ -1,0 +1,22 @@
+<div class="centerPage login" id="loginPage">
+  <div class="welcomeMessage">
+      Plant Transfer Login
+  </div>
+  <div class="loginCenterDiv">
+      <div id="loginBox">
+          <div class="logoDiv"><img src="assets/logo.png"></div>
+          <div class="idLabel">ID Number</div>
+          <div class="inputDiv">
+              <input class="inputField" name="userName" id="loginUsername" type="text" maxlength="50" onchange="inputOnChange()"/>
+          </div>
+          <div class="idLabel">Password</div>
+          <div class="inputDiv">
+              <input type="password" class="inputField" name="userPassword" id="userPassword" type="text" maxlength="16" onchange="inputOnChange()"/>
+          </div>
+          <div class="buttonContainer-login">
+              <button class="btn-login" id="submitButton" onclick="tryLogin()">SIGN IN</button>
+          </div>
+          <div id="loginErrorMessage"></div>
+      </div>
+  </div>
+</div>
