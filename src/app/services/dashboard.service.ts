@@ -10,6 +10,7 @@ import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 import { Subject } from 'rxjs';
 import { DashboardItemService } from './dashboard-item.service';
+import { HTTPService } from './http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,8 @@ export class DashboardService {
 
   addDashboard = new Subject<void>();
 
-  constructor(private dashboardItemService: DashboardItemService) {}
+  constructor(private dashboardItemService: DashboardItemService,
+              private httpService: HTTPService) {}
 
   getDashNames(index: number) {
     return this.dashArray[index].name;
@@ -43,13 +45,15 @@ export class DashboardService {
     this.dashboardsChanged.next(this.dashArray.slice());
   }
 
-  createDashboard(name: string) {
-    const newDash: Dashboard = {
-      name: name,
-      items: [],
-    };
-    this.dashArray.push(newDash);
-    this.dashboardsChanged.next(this.dashArray.slice());
+  createDashboard(dashData: Dashboard) {
+    this.httpService.createCustomDashboard(dashData.name);
+
+    // const newDash: Dashboard = {
+    //   name: name,
+    //   items: [],
+    // };
+    // this.dashArray.push(newDash);
+    // this.dashboardsChanged.next(this.dashArray.slice());
   }
 
   deleteDashboard(index: number) {

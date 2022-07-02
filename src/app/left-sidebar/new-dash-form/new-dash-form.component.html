@@ -1,0 +1,17 @@
+<div class="form">
+  <h2>New Dashboard</h2>
+  <form name="newDash"
+    [formGroup]="dashboardForm"
+    (ngSubmit)="submitDashboard()">
+    <div class="form-group">
+      <input placeholder="name"
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name">
+    </div>
+    <div class="submit">
+      <button class="btn btn-primary" type="submit">Create</button>
+    </div>
+  </form>
+</div>

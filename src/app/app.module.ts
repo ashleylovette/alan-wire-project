@@ -20,6 +20,7 @@ import { ExitComponent } from './exit/exit.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NewDashFormComponent } from './left-sidebar/new-dash-form/new-dash-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
     ConfirmDeleteComponent,
     ExitComponent,
     HomeComponent,
+    NewDashFormComponent
   ],
   imports: [
     BrowserModule,
