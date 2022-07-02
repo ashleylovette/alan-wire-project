@@ -38,6 +38,11 @@ export class DashboardService {
     return this.dashArray.slice();
   }
 
+  setDashboards(dashboards: Dashboard[]) {
+    this.dashArray = dashboards;
+    this.dashboardsChanged.next(this.dashArray.slice());
+  }
+
   createDashboard(name: string) {
     const newDash: Dashboard = {
       name: name,
