@@ -11,6 +11,9 @@ export class DashboardItemComponent implements OnInit {
   // Input data from main-grid.component.html
     @Input() dbItem: DashboardItem;
     @Input() index: number;
+    totalQty: number;
+    totalDollar: number;
+    dashboardItems: any;
 
   constructor(private dashService: DashboardService) {}
 
