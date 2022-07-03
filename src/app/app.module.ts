@@ -37,7 +37,11 @@ import { AppRoutingModule } from './app-routing.module';
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
+<<<<<<< Updated upstream
     HomeComponent
+=======
+    HomeComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
