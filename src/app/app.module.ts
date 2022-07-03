@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SizeDirective } from './size.directive';
 import { AppComponent } from './app.component';
@@ -20,7 +21,6 @@ import { ExitComponent } from './exit/exit.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NewDashFormComponent } from './left-sidebar/new-dash-form/new-dash-form.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,7 @@ import { NewDashFormComponent } from './left-sidebar/new-dash-form/new-dash-form
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
-    HomeComponent,
-    NewDashFormComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,8 @@ import { NewDashFormComponent } from './left-sidebar/new-dash-form/new-dash-form
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

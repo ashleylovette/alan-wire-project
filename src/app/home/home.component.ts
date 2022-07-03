@@ -11,22 +11,16 @@ export class HomeComponent implements OnInit {
   addDashboard: boolean = false;
   dashboardSelected = false;
 
-  constructor() {
-  }
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
+    this.dashboardService.addDashboard.subscribe(() => {
+      this.addDashboard = !this.addDashboard;
+    });
 
+    this.dashboardService.dashboardSelected.subscribe(() => {
+      this.dashboardSelected = true;
+    })
   }
-  // constructor(private dashboardService: DashboardService) {}
-
-  // ngOnInit(): void {
-  //   this.dashboardService.addDashboard.subscribe(() => {
-  //     this.addDashboard = !this.addDashboard;
-  //   });
-
-  //   this.dashboardService.dashboardSelected.subscribe(() => {
-  //     this.dashboardSelected = true;
-  //   })
-  // }
 
 }
