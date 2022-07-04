@@ -32,28 +32,24 @@ export class DashboardService {
   constructor(private dashboardItemService: DashboardItemService,
               private httpService: HTTPService) {}
 
+  createDashboard(dashData: Dashboard) {
+    this.httpService.createCustomDashboard(dashData.name);
+  }
+
+  setDashboards() {
+    const dashboards: Dashboard[] = this.httpService.getCustomDashboards()
+    this.dashArray = dashboards;
+
+    // this.dashArray = dashboards;
+    // this.dashboardsChanged.next(this.dashArray.slice());
+  }
+
   getDashNames(index: number) {
     return this.dashArray[index].name;
   }
 
   getArray() {
     return this.dashArray.slice();
-  }
-
-  setDashboards(dashboards: Dashboard[]) {
-    this.dashArray = dashboards;
-    this.dashboardsChanged.next(this.dashArray.slice());
-  }
-
-  createDashboard(dashData: Dashboard) {
-    this.httpService.createCustomDashboard(dashData.name);
-
-    // const newDash: Dashboard = {
-    //   name: name,
-    //   items: [],
-    // };
-    // this.dashArray.push(newDash);
-    // this.dashboardsChanged.next(this.dashArray.slice());
   }
 
   deleteDashboard(index: number) {
