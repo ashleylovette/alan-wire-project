@@ -33,7 +33,9 @@ export class AuthService {
       map((res: any) => {
         const user = res;
         // console.log(user);
-        if (user.success) {
+        // change to force Git updata
+
+        if ( user.success ) {
           console.log("success", user)
           localStorage.setItem('Bearer', user.payload.token.value);
           // console.log(localStorage)
