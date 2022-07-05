@@ -20,6 +20,9 @@ import { ExitComponent } from './exit/exit.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     ConfirmDeleteComponent,
     ExitComponent,
     HomeComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +49,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
