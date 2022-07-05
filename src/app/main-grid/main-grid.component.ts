@@ -19,11 +19,13 @@ export class MainGridComponent implements OnInit {
   dashboardSelected: boolean = false;
   selectDashboard = new Subscription();
   exit: boolean = false;
+  dashboardItems: any;
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
     // Get selected dashboard on init
+
     this.selectDashboardSub = this.dashboardService.dashboardSelected.subscribe(
       (dashboard: Dashboard) => {
         this.selectedDashboard = dashboard;
@@ -46,6 +48,24 @@ export class MainGridComponent implements OnInit {
     this.dashboardService.dashboardDeleted.subscribe(() => {
       this.dashboardSelected = false;
     });
+
+    // getting total numbers for sales and qty by region, this will probably need to be revisited when we get live data
+    this.dashboardItems = this.dashboardService.getDashboardItems();
+    this.dashboardItems.map(x => {
+      if(x.salesman.length > 1) {
+        x.salesman.map(x => {
+          this.dashboardService.totalSalesArray.push(x.dollar_amount_sold * x.qty_wire)
+        })
+      }
+    })
+
+    this.dashboardItems.map(x => {
+      if(x.salesman.length > 1) {
+        x.salesman.map(x => {
+          this.dashboardService.totalQtyArray.push(x.qty_wire)
+        })
+      }
+    })
   }
 
   ngOnDestroy() {

@@ -11,10 +11,19 @@ export class DashboardItemComponent implements OnInit {
   // Input data from main-grid.component.html
     @Input() dbItem: DashboardItem;
     @Input() index: number;
+    totalQty: number;
+    totalDollar: number;
+    dashboardItems: any;
 
   constructor(private dashService: DashboardService) {}
 
   ngOnInit() {
+    this.totalDollar = this.dashService.totalSalesArray.reduce((a, b) => {
+      return a + b;
+    }, 0).toFixed(2);
+    this.totalQty = this.dashService.totalQtyArray.reduce((a, b) => {
+      return a + b;
+    }, 0)
   }
 
   onDelete() {
