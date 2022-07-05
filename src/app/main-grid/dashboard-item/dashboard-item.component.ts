@@ -18,6 +18,12 @@ export class DashboardItemComponent implements OnInit {
   constructor(private dashService: DashboardService) {}
 
   ngOnInit() {
+    this.totalDollar = this.dashService.totalSalesArray.reduce((a, b) => {
+      return a + b;
+    }, 0).toFixed(2);
+    this.totalQty = this.dashService.totalQtyArray.reduce((a, b) => {
+      return a + b;
+    }, 0)
   }
 
   onDelete() {

@@ -24,6 +24,8 @@ export class DashboardService {
   dashboardCleared = new EventEmitter<any>();
   dashboardWasSelected: boolean;
   currDashIdx: number;
+  totalSalesArray = [];
+  totalQtyArray = [];
   private salesmen: Salesman[] = [
     // {
     //   name: "Mako Mori",
@@ -356,6 +358,10 @@ private dashboards: Dashboard[] = [
 
   getDashboard(index: number) {
     return this.dashboards.slice()[index];
+  }
+
+  getDashItem(index: number) {
+    return this.dashboardItems[index];
   }
 
   addDashItem(dashItem: DashboardItem) {

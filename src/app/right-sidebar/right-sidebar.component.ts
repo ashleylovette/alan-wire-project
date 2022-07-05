@@ -28,7 +28,7 @@ export class RightSidebarComponent implements OnInit, OnDestroy {
   }
 
   addItem(itemIndex: number) {
-    const dashItem = this.dashItemsService.getItem(itemIndex);
+    const dashItem = this.dashboardService.getDashItem(itemIndex);
     this.dashboardService.addDashItem(dashItem);
   }
 
