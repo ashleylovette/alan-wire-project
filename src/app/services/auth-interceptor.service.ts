@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { take, exhaustMap } from 'rxjs/operators'
+import { AuthService } from '../auth/auth.service'
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
@@ -15,7 +16,7 @@ export class AuthInterceptorService implements HttpInterceptor {
                 if (!user) { return next.handle(req)}
 
                 const modifiedReq = req.clone({
-                    params: new HttpParams().set('auth', user.token)
+                    params: new HttpParams().set(`Bearer `, localStorage.getItem('Bearer'))
                 })
                 return next.handle(modifiedReq)
             })

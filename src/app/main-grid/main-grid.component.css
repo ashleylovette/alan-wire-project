@@ -5,12 +5,11 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
   margin: 2.5%;
+  padding-bottom: 2rem;
 }
 
 .dashboard-item {
-  display: flex;
-  border: 2px solid black;
-  max-width: fit-content;
+  border: none;
 }
 
 .small {

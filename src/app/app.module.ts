@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 import { SizeDirective } from './size.directive';
 import { AppComponent } from './app.component';
@@ -21,6 +20,9 @@ import { ExitComponent } from './exit/exit.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,11 +39,10 @@ import { AppRoutingModule } from './app-routing.module';
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
-    HomeComponent
   ],
+
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
@@ -49,7 +50,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
