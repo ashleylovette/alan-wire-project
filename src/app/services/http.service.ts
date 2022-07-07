@@ -17,7 +17,7 @@ export class HTTPService {
   createCustomDashboard(name: string) {
     const dashData: Dashboard = {name: name}
     this.http.post<{ name: string }>(
-      this.testUrl + 'custom_dashboard',
+      this.testUrl + 'custom_dashboards',
       dashData
     )
     .subscribe(resData => {

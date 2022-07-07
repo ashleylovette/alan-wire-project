@@ -39,6 +39,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     AlertComponent,
     ConfirmDeleteComponent,
     ExitComponent,
+    HomeComponent,
+    AuthComponent
   ],
 
   imports: [

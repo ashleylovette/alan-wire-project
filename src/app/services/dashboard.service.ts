@@ -317,17 +317,17 @@ private dashboards: Dashboard[] = [
   constructor(private dashboardItemService: DashboardItemService,
               private httpService: HTTPService) {}
 
-  // createDashboard(dashData: Dashboard) {
-  //   this.httpService.createCustomDashboard(dashData.name);
-  // }
-
-  setDashboards() {
-    const dashboards: Dashboard[] = this.httpService.getCustomDashboards()
-    this.dashArray = dashboards;
-
-    // this.dashArray = dashboards;
-    // this.dashboardsChanged.next(this.dashArray.slice());
+  createDashboard(dashData: Dashboard) {
+    this.httpService.createCustomDashboard(dashData.name);
   }
+
+  // setDashboards() {
+  //   const dashboards: Dashboard[] = this.httpService.getCustomDashboards()
+  //   this.dashArray = dashboards;
+
+  //   // this.dashArray = dashboards;
+  //   // this.dashboardsChanged.next(this.dashArray.slice());
+  // }
 
   getDashNames(index: number) {
     return this.dashboards[index].name;
@@ -349,14 +349,14 @@ private dashboards: Dashboard[] = [
     return this.dashboards.slice();
   }
 
-  createDashboard(name: string) {
-    const newDash: Dashboard = {
-      name: name,
-      items: [],
-    };
-    this.dashboards.push(newDash);
-    this.dashboardsChanged.next(this.dashboards.slice());
-  }
+  // createDashboard(name: string) {
+  //   const newDash: Dashboard = {
+  //     name: name,
+  //     items: [],
+  //   };
+  //   this.dashboards.push(newDash);
+  //   this.dashboardsChanged.next(this.dashboards.slice());
+  // }
 
   deleteDashboard(index: number) {
     if (index !== -1) {
