@@ -10,13 +10,20 @@ export class HomeComponent implements OnInit {
   title = 'alan-wire-project';
   addDashboard: boolean = false;
   dashboardSelected = false;
+  showLeftColumn = true;
+  showRightColumn = true;
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  handleLeftClick(event) {
+    this.showLeftColumn = event;
+  }
+  handleRightClick(event) {
+    this.showRightColumn = event;
   }
 
-  ngOnInit(): void {
-
-  }
   // constructor(private dashboardService: DashboardService) {}
 
   // ngOnInit(): void {

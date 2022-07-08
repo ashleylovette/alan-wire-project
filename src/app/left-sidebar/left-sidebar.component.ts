@@ -39,11 +39,13 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dashboardChangedSub.unsubscribe();
-    this.deletedDashboardSub.unsubscribe();
-    this.selectedDashboardSub.unsubscribe();
-    this.cancelDashboardSub.unsubscribe();
-    this.messageClearedSub.unsubscribe();
+// httpClient auto unSubscribes. These are not needed.
+
+    //this.dashboardChangedSub.unsubscribe();
+    //this.deletedDashboardSub.unsubscribe();
+    //this.selectedDashboardSub.unsubscribe();
+    //this.cancelDashboardSub.unsubscribe();
+    //this.messageClearedSub.unsubscribe();
   }
 
   onAddDashboard() {
