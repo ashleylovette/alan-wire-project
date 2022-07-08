@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpParams } from '@angular/common/http'
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { take, exhaustMap } from 'rxjs/operators'
 import { AuthService } from '../auth/auth.service'
@@ -16,7 +16,9 @@ export class AuthInterceptorService implements HttpInterceptor {
                 if (!user) { return next.handle(req)}
 
                 const modifiedReq = req.clone({
-                    params: new HttpParams().set(`Bearer `, localStorage.getItem('Bearer'))
+                    headers: new HttpHeaders().set(`Authorization`, 'Bearer ' + localStorage.getItem('Bearer'))
+
+                    // (`Bearer `, localStorage.getItem('Bearer'))
                 })
                 return next.handle(modifiedReq)
             })

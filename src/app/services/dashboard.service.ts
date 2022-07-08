@@ -9,7 +9,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 import { Subject } from 'rxjs';
-import { DashboardItemService } from './dashboard-item.service';
 import { HTTPService } from './http.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
 
@@ -27,6 +26,8 @@ export class DashboardService {
   currDashIdx: number;
   totalSalesArray = [];
   totalQtyArray = [];
+  // private dashboards: Dashboard[];
+
   private salesmen: Salesman[] = [
     // {
     //   name: "Mako Mori",
@@ -220,7 +221,8 @@ export class DashboardService {
     dollar_amount_sold: 0.13031,
     region: "West"
   }]
-}]
+  }]
+
 private dashboards: Dashboard[] = [
   {name: "Sales 1", items:
   [
@@ -314,20 +316,16 @@ private dashboards: Dashboard[] = [
 
   addDashboard = new Subject<void>();
 
-  constructor(private dashboardItemService: DashboardItemService,
-              private httpService: HTTPService) {}
+  constructor(private httpService: HTTPService) {}
 
-  createDashboard(dashData: Dashboard) {
-    this.httpService.createCustomDashboard(dashData.name);
+  createDashboard(dashData: string) {
+    this.httpService.createCustomDashboard(dashData);
   }
 
-  // setDashboards() {
-  //   const dashboards: Dashboard[] = this.httpService.getCustomDashboards()
-  //   this.dashArray = dashboards;
-
-  //   // this.dashArray = dashboards;
-  //   // this.dashboardsChanged.next(this.dashArray.slice());
-  // }
+  setDboards(dashboards) {
+   this.dashboards = dashboards;
+   this.dashboardsChanged.next(this.dashboards.slice());
+  }
 
   getDashNames(index: number) {
     return this.dashboards[index].name;
@@ -345,18 +343,9 @@ private dashboards: Dashboard[] = [
     return this.dashboardItems[index];
   }
 
-  getDashboards() {
+  getDashboards(): Dashboard[] {
     return this.dashboards.slice();
   }
-
-  // createDashboard(name: string) {
-  //   const newDash: Dashboard = {
-  //     name: name,
-  //     items: [],
-  //   };
-  //   this.dashboards.push(newDash);
-  //   this.dashboardsChanged.next(this.dashboards.slice());
-  // }
 
   deleteDashboard(index: number) {
     if (index !== -1) {
@@ -385,4 +374,13 @@ private dashboards: Dashboard[] = [
   deleteDashItem(currItemIdx: number) {
     this.dashboards[this.currDashIdx].items.splice(currItemIdx, 1);
   }
+
+    // createDashboard(name: string) {
+  //   const newDash: Dashboard = {
+  //     name: name,
+  //     items: [],
+  //   };
+  //   this.dashboards.push(newDash);
+  //   this.dashboardsChanged.next(this.dashboards.slice());
+  // }
 }

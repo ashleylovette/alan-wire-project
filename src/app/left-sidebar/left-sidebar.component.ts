@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from '../services/dashboard.service';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -19,9 +20,12 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashWasDeleted: boolean = false;
   messageClearedSub: Subscription;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService,
+              private httpService: HTTPService) {}
 
   ngOnInit(): void {
+    this.httpService.getCustomDashboards();
+
     this.dashArray = this.dashboardService.getDashboards();
 
     this.dashboardChangedSub = this.dashboardService.dashboardsChanged.subscribe(
@@ -39,11 +43,13 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dashboardChangedSub.unsubscribe();
-    this.deletedDashboardSub.unsubscribe();
-    this.selectedDashboardSub.unsubscribe();
-    this.cancelDashboardSub.unsubscribe();
-    this.messageClearedSub.unsubscribe();
+    // These were breaking the app on logout.  Are these REALLY needed?
+
+    // this.dashboardChangedSub.unsubscribe();
+    // this.deletedDashboardSub.unsubscribe();
+    // this.selectedDashboardSub.unsubscribe();
+    // this.cancelDashboardSub.unsubscribe();
+    // this.messageClearedSub.unsubscribe();
   }
 
   onAddDashboard() {
