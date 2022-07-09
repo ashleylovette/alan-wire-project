@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exhaustMap, map, take, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model';
 
 import { Dashboard } from '../main-grid/dashboard.model';
 import { DashboardService } from './dashboard.service';
@@ -32,31 +33,24 @@ export class HTTPService {
       });
     console.log('dashData', dashData);
   }
-  //read
-  // getCustomDashboards() {
-  //   this.http
-  //     .get(this.testUrl + 'custom_dashboards/index')
-  //     .subscribe((dashboards) => {
-  //       console.log('here', dashboards);
-  //       console.log(this.dashboardService);
-  //       this.dashboardService.tryAgain(dashboards);
-  //     });
-  // }
 
-  // getCustomDashboards() {
-  //   return this.http
-  //     .get(`${this.testUrl}custom_dashboards/index`)
-  //     .subscribe((res) => {
-  //       this.reportData = res;
-  //       console.log(this.reportData);
-  //       this.dashboards = this.reportData.payload.map((x) => new Dashboard(x));
-  //     });
-  // }
+  //read
+  getCustomDashboards() {
+      return this.http
+      .get(`${this.testUrl}custom_dashboards/index`)
+  }
 
   //update
-
+  updateCustomDashboard(selectedDashId) {
+    // return this.http.patch(`${this.testUrl}custom_dashboards/${selectedDashId}`)
+  }
   //destroy
-
+  deleteCustomDashboard(index: number) {
+    return this.http.delete(`${this.testUrl}custom_dashboards/${index}`)
+    .subscribe((res) => {
+      console.log(res);
+    })
+  }
   // Dashboard Item Requests
 
   //Salesman Requests?

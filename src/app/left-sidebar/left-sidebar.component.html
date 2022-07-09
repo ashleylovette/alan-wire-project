@@ -5,7 +5,7 @@
     <mat-icon aria-hidden="false" aria-label="Add">add</mat-icon>
   </button>
   <!-- DELETE DASHBOARD -->
-  <button class="remove" type="button" (click)="onConfirmDelete()">
+  <button class="remove" type="button" (click)="onConfirmDelete()" [id]="currentId">
     <mat-icon aria-hidden="false" aria-label="Remove">remove</mat-icon>
   </button>
   <!-- DASHBOARD LINKS, DISPLAYED WHEN OPEN -->

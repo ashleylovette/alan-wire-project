@@ -31,6 +31,7 @@ export class MainGridComponent implements OnInit {
         this.selectedDashboard = dashboard;
         this.dashBoardItems = dashboard.items;
         this.dashboardSelected = true;
+        console.log('selected dashboard', this.selectedDashboard)
       }
     );
 

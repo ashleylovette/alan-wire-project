@@ -12,6 +12,8 @@ import { Subject } from 'rxjs';
 import { HTTPService } from './http.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
 import { HttpClient } from '@angular/common/http';
+import { report } from 'process';
+import { map, tap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -20,16 +22,17 @@ export class DashboardService {
   cancelDelete = new EventEmitter();
   deleteDash = new Subject<Dashboard>();
   dashboardDeleted = new EventEmitter();
-  dashboardsChanged = new Subject<Dashboard[]>();
+  dashboardsChanged = new Subject<Dashboard[] | any>();
   dashboardSelected = new Subject<object>();
   dashboardCleared = new EventEmitter<any>();
   dashboardWasSelected: boolean;
   currDashIdx: number;
+  currentDashId: number;
   totalSalesArray = [];
   totalQtyArray = [];
   testUrl = 'http://localhost:3000/api/v1/';
-  reportData: any;
-  dashboards: Dashboard[];
+  resData: any;
+  dashboards: Dashboard[] = [];
 
   private salesmen: Salesman[] = [
     // {
@@ -122,22 +125,22 @@ export class DashboardService {
       part_number: '14NO35',
       dollar_amount_sold: 0.13031,
       region: 'West',
-    },
-    {
+  },
+  {
       name: 'Luke Skywalker',
       qty_wire: 4000,
       part_number: '14NO35',
       dollar_amount_sold: 0.13031,
       region: 'West',
-    },
-    {
+  },
+  {
       name: 'Leia Skywalker',
       qty_wire: 15000,
       part_number: '14NO35',
       dollar_amount_sold: 0.13031,
       region: 'West',
-    },
-    {
+  },
+  {
       name: 'James Kirk',
       qty_wire: 5000,
       part_number: '14NO35',
@@ -149,28 +152,28 @@ export class DashboardService {
   private dashboardItems: DashboardItem[] = [
     {
       name: 'James Kirk',
-      size: 1,
-      display_type: 1,
+    size: 1,
+    display_type: 1,
       salesman: [
         {
           name: 'James Kirk',
-          qty_wire: 5000,
+      qty_wire: 5000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+      dollar_amount_sold: 0.13031,
           region: 'West',
-        },
+    },
       ],
     },
     {
       name: 'Luke Skywalker',
-      size: 1,
-      display_type: 1,
+    size: 1,
+    display_type: 1,
       salesman: [
         {
           name: 'Luke Skywalker',
-          qty_wire: 4000,
+      qty_wire: 4000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+      dollar_amount_sold: 0.13031,
           region: 'West',
         },
       ],
@@ -182,9 +185,9 @@ export class DashboardService {
       salesman: [
         {
           name: 'Tony Stark',
-          qty_wire: 9000,
+        qty_wire: 9000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+        dollar_amount_sold: 0.13031,
           region: 'West',
         },
       ],
@@ -196,153 +199,50 @@ export class DashboardService {
       salesman: [
         {
           name: 'Leia Skywalker',
-          qty_wire: 15000,
+        qty_wire: 15000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+        dollar_amount_sold: 0.13031,
           region: 'West',
-        },
+    },
       ],
     },
     {
       name: 'Western Sales',
-      size: 3,
-      display_type: 2,
+    size: 3,
+    display_type: 2,
       salesman: [
         {
           name: 'Leia Skywalker',
-          qty_wire: 15000,
+      qty_wire: 15000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+      dollar_amount_sold: 0.13031,
           region: 'West',
-        },
-        {
+  },
+  {
           name: 'Tony Stark',
-          qty_wire: 9000,
+    qty_wire: 9000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+    dollar_amount_sold: 0.13031,
           region: 'West',
-        },
-        {
+  },
+  {
           name: 'Luke Skywalker',
-          qty_wire: 4000,
+    qty_wire: 4000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+    dollar_amount_sold: 0.13031,
           region: 'West',
-        },
-        {
+  },
+  {
           name: 'James Kirk',
-          qty_wire: 5000,
+    qty_wire: 5000,
           part_number: '14NO35',
-          dollar_amount_sold: 0.13031,
+    dollar_amount_sold: 0.13031,
           region: 'West',
         },
       ],
     },
   ];
 
-  // private dashboards: Dashboard[] = [
-  //   {
-  //     name: 'Sales 1',
-  //     items: [
-  //       // item one
-  //       {
-  //         name: 'James Kirk',
-  //         size: 1,
-  //         display_type: 1,
-  //         salesman: [
-  //           {
-  //             name: 'James Kirk',
-  //             qty_wire: 5000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //         ],
-  //       },
-  //       // item 2
-  //       {
-  //         name: 'Luke Skywalker',
-  //         size: 1,
-  //         display_type: 1,
-  //         salesman: [
-  //           {
-  //             name: 'Luke Skywalker',
-  //             qty_wire: 4000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //         ],
-  //       },
-  //       // item 3
-  //       {
-  //         name: 'Tony Stark',
-  //         size: 1,
-  //         display_type: 1,
-  //         salesman: [
-  //           {
-  //             name: 'Tony Stark',
-  //             qty_wire: 9000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //         ],
-  //       },
-  //       // item 4
-  //       {
-  //         name: 'Leia Skywalker',
-  //         size: 1,
-  //         display_type: 1,
-  //         salesman: [
-  //           {
-  //             name: 'Leia Skywalker',
-  //             qty_wire: 15000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //         ],
-  //       },
-  //       // item 5
-  //       {
-  //         name: 'Western Sales',
-  //         size: 3,
-  //         display_type: 2,
-  //         salesman: [
-  //           {
-  //             name: 'Leia Skywalker',
-  //             qty_wire: 15000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //           {
-  //             name: 'Tony Stark',
-  //             qty_wire: 9000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //           {
-  //             name: 'Luke Skywalker',
-  //             qty_wire: 4000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //           {
-  //             name: 'James Kirk',
-  //             qty_wire: 5000,
-  //             part_number: '14NO35',
-  //             dollar_amount_sold: 0.13031,
-  //             region: 'West',
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // ];
 
   addDashboard = new Subject<void>();
 
@@ -350,6 +250,8 @@ export class DashboardService {
 
   createDashboard(dashData: string) {
     this.httpService.createCustomDashboard(dashData);
+    this.dashboards = [];
+    this.fetchCustomDashboards();
   }
 
   setDboards() {
@@ -376,10 +278,11 @@ export class DashboardService {
   //   return this.dashboards.slice();
   // }
 
-  deleteDashboard(index: number) {
-    if (index !== -1) {
-      this.dashboards.splice(index, 1);
-      this.deleteDash.next(this.dashboards[index]);
+  deleteDashboard() {
+    const id = this.currentDashId
+    if (id !== -1) {
+      this.httpService.deleteCustomDashboard(id)
+
       this.dashboardsChanged.next(this.dashboards.slice());
     }
   }
@@ -404,34 +307,27 @@ export class DashboardService {
     this.dashboards[this.currDashIdx].items.splice(currItemIdx, 1);
   }
 
-  // createDashboard(name: string) {
-  //   const newDash: Dashboard = {
-  //     name: name,
-  //     items: [],
-  //   };
-  //   this.dashboards.push(newDash);
-  //   this.dashboardsChanged.next(this.dashboards.slice());
-  // }
+  refreshDashboards(): void {
+    this.fetchCustomDashboards();
+  }
 
-  getCustomDashboards() {
-    return this.http
-      .get(`${this.testUrl}custom_dashboards/index`)
-      .subscribe((res) => {
-        this.reportData = res;
-        this.dashboards = this.reportData.payload.map((x: any) => {
-          const dashboard = x;
-          const newDash = new Dashboard(
-            dashboard.name,
-            dashboard.items.forEach((DashboardItem) => {
-              const newDashItem = new DashboardItem(
-                DashboardItem.name,
-                DashboardItem.size,
-                DashboardItem.display_type
-              );
-            })
-          );
-        });
-        console.log(this.dashboards);
-      });
+  fetchCustomDashboards() {
+    this.dashboards = [];
+    this.httpService.getCustomDashboards().subscribe(res => {
+      this.resData= res;
+      console.log('res', res)
+      this.resData.payload.map(x => {
+        console.log('JSON dashItem', x.dashboard_item)
+        const newDash = new Dashboard(
+          x.id,
+          x.name,
+          x.dashboard_item
+        )
+        this.dashboards.push(newDash);
+      })
+      console.log(this.dashboards);
+      this.dashboardsChanged.next(this.dashboards);
+    }
+    );
   }
 }

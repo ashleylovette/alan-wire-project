@@ -10,15 +10,17 @@ import { HTTPService } from '../services/http.service';
   styleUrls: ['./left-sidebar.component.css'],
 })
 export class LeftSidebarComponent implements OnInit, OnDestroy {
-  dashArray: Dashboard[];
+  dashArray: Dashboard[] = [];
   private dashboardChangedSub: Subscription;
   private deletedDashboardSub: Subscription;
   private selectedDashboardSub: Subscription;
   private cancelDashboardSub: Subscription;
+  currentId: number;
   index: number;
   confirmed: boolean = true;
   dashWasDeleted: boolean = false;
   messageClearedSub: Subscription;
+  // resData: any;
 
   constructor(
     private dashboardService: DashboardService,
@@ -26,7 +28,21 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.dashboardService.getCustomDashboards();
+    this.dashboardService.fetchCustomDashboards();
+    // this.dashboardService.getCustomDashboards().subscribe(res => {
+    //   this.resData= res;
+    //   this.resData.payload.map(x => {
+    //     console.log('JSON dashItem', x.dashboard_item)
+    //     const newDash = new Dashboard(
+    //       x.name,
+    //       x.dashboard_item
+    //     )
+    //     this.dashArray.push(newDash)
+    //   })
+    //   console.log(this.dashArray);
+    // }
+    // );
+
     // this.dashArray = this.dashboardService.setDboards();
     // this.dashArray = this.dashboardService.getDashboards();
 
@@ -72,5 +88,6 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
     this.dashboardService.dashboardSelected.next(dashboard);
     this.dashboardService.currDashIdx = index;
     this.index = index;
+    this.dashboardService.currentDashId = dashboard.id;
   }
 }
