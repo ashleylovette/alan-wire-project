@@ -8,20 +8,56 @@
   display: none;
 }
 
-.my-row {
-  display: flex;
-  flex-direction: row;
+#workarea {
+  height: 100% !important;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+  grid-template-areas: "workarea";
+}
+
+#my-container {
+  max-height: 100% !important;
+  overflow: hidden;
+  grid-area: workarea;
+  display: grid;
+  grid-template-rows: 90px 1fr 40px;
+  grid-template-areas: "header" "myrow" "footer";
+}
+
+#header {
+  grid-area: header;
+  height: 90px;
+}
+#footer {
+  grid-area: footer;
+}
+
+#my-row {
+  grid-area: myrow;
+  display: grid;
   width: 100%;
-  justify-content: space-around;
-  margin-left: 0;
-  overflow-x: hidden;
+  grid-template-columns: 190px 1fr 190px;
+  overflow: scroll;
+}
+.bothSides {
+  grid-template-areas: "left center right";
+}
+.noLeft {
+  grid-template-areas: "center center right";
+}
+.noRight {
+  grid-template-areas: "left center center";
+}
+.noSides {
+  grid-template-areas: "center center center";
 }
 
 .left-col {
+  grid-area: left;
   display: flex;
   flex-direction: column;
   background-color: var(--field-color);
-  width: 18%;
   left: 0;
 }
 
@@ -31,50 +67,33 @@
 }
 
 .center-col {
+  grid-area: center;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 .right-col {
+  grid-area: right;
   display: flex;
   flex-direction: column;
   background-color: var(--field-color);
-  width: 19%;
   right: 0;
 }
 
- @media only screen and (max-width: 600px) {
 
-  .left-col {
-    width: 35%;
-  }
-
-  .right-col {
-    width: 35%;
-  }
-
-  .header-container {
-    align-content: center;
-  }
-}
  button.add mat-icon {
   font-size: 16px;
 }
-/*
-@media only screen and (min-width: 768px) {
 
+@media only screen and (min-width: 1440px) {
+  #workarea {
+    grid-template-columns: auto 1440px auto;
+    grid-template-areas: ".. workarea ..";
+  }
+  #my-container {
+    grid-column: 2;
+  }
 }
 
-@media only screen and (min-width: 992px) {
-
-}
-
-@media only screen and (min-width: 1200px) {
-
-}
-
-@media only screen and (orientation: landscape) {
-
-} */
 

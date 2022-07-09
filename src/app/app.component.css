@@ -1,80 +1,8 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  background-color: #0000ff11;
 }
 
-.hide {
-  display: none;
-}
-
-.my-row {
-  display: flex;
-  flex-direction: row;
+#app-home{
   width: 100%;
-  justify-content: space-around;
-  margin-left: 0;
-  overflow-x: hidden;
+  height: 100%;
 }
-
-.left-col {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--field-color);
-  width: 18%;
-  left: 0;
-}
-
-.dashboard-form {
-  position: absolute;
-  margin-top: 10%;
-}
-
-.center-col {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.right-col {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--field-color);
-  width: 19%;
-  right: 0;
-}
-
- @media only screen and (max-width: 600px) {
-
-  .left-col {
-    width: 35%;
-  }
-
-  .right-col {
-    width: 35%;
-  }
-
-  .header-container {
-    align-content: center;
-  }
-}
- button.add mat-icon {
-  font-size: 16px;
-}
-/*
-@media only screen and (min-width: 768px) {
-
-}
-
-@media only screen and (min-width: 992px) {
-
-}
-
-@media only screen and (min-width: 1200px) {
-
-}
-
-@media only screen and (orientation: landscape) {
-
-} */
-

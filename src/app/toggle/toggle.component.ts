@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-toggle',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toggle.component.css'],
 })
 export class ToggleComponent implements OnInit {
+  @Output() leftClick = new EventEmitter();
+  @Output() rightClick = new EventEmitter();
+
+
   leftOpen = true;
   leftChevron: string = 'chevron_left';
   rightOpen = true;
@@ -16,38 +21,15 @@ export class ToggleComponent implements OnInit {
   ngOnInit(): void {}
 
   leftToggle() {
-    if (this.leftOpen) {
-      document.getElementById('leftBar').className = 'hide';
-    } else if (!this.leftOpen) {
-      document.getElementById('leftBar').className = 'left-col';
-    }
     this.leftOpen = !this.leftOpen;
-    this.leftToggleIcon();
-  }
-
-  leftToggleIcon() {
-    if (this.leftChevron === 'chevron_right') {
-      this.leftChevron = 'chevron_left';
-    } else {
-      this.leftChevron = 'chevron_right';
-    }
+    this.leftClick.emit(this.leftOpen)
+    this.leftChevron = (this.leftChevron === 'chevron_right') ? 'chevron_left' : 'chevron_right';
   }
 
   rightToggle() {
-    if (this.rightOpen) {
-      document.getElementById('rightBar').className = 'hide';
-    } else if (!this.rightOpen) {
-      document.getElementById('rightBar').className = 'right-col';
-    }
-    this.rightOpen = !this.rightOpen;
-    this.rightToggleIcon();
+    this.rightOpen = !this.rightOpen
+    this.rightClick.emit(this.rightOpen)
+    this.rightChevron = (this.rightChevron === 'chevron_right') ? 'chevron_left' : 'chevron_right';
   }
 
-  rightToggleIcon() {
-    if (this.rightChevron === 'chevron_left') {
-      this.rightChevron = 'chevron_right';
-    } else {
-      this.rightChevron = 'chevron_left';
-    }
-  }
 }
