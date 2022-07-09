@@ -40,11 +40,11 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ConfirmDeleteComponent,
     ExitComponent,
     HomeComponent,
-    AuthComponent,
+    AuthComponent
   ],
+
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,

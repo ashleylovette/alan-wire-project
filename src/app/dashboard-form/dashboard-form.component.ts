@@ -22,8 +22,9 @@ export class DashboardFormComponent implements OnInit {
 
   onFormSubmit() {
     this.dashboardAdded = true;
-    console.log(this.dashboardForm.value.dashName);
-    this.dashboardService.createDashboard(this.dashboardForm.value.dashName);
+    const dashName = this.dashboardForm.get('dashName').value;
+    console.log('submitName', dashName)
+    this.dashboardService.createDashboard(dashName);
 
     this.dashboardForm.reset();
   }

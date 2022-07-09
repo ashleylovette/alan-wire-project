@@ -47,8 +47,8 @@ export class AuthService {
             user.payload.user.first_name,
             user.payload.user.last_name
           );
-          console.log(newUser)
-          console.log(this.user)
+          console.log("newUser", newUser)
+          console.log('user', this.user)
           this.user.next(newUser);
         }
       }

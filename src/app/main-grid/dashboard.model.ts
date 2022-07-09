@@ -1,10 +1,12 @@
 import { DashboardItem } from './dashboard-item/dashboard-item.model';
 
 export class Dashboard {
-  public name?: string;
+  public name: string;
+  public id?: number;
   public items?: DashboardItem[];
 
-  constructor(name: string, user_id: number, items?: []) {
+  constructor(id: number, name: string, items?: []) {
+    this.id = id;
     this.name = name;
     this.items = items;
   }
