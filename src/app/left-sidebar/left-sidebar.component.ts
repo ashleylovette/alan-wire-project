@@ -24,27 +24,10 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
 
   constructor(
     private dashboardService: DashboardService,
-    private httpService: HTTPService
   ) {}
 
   ngOnInit(): void {
     this.dashboardService.fetchCustomDashboards();
-    // this.dashboardService.getCustomDashboards().subscribe(res => {
-    //   this.resData= res;
-    //   this.resData.payload.map(x => {
-    //     console.log('JSON dashItem', x.dashboard_item)
-    //     const newDash = new Dashboard(
-    //       x.name,
-    //       x.dashboard_item
-    //     )
-    //     this.dashArray.push(newDash)
-    //   })
-    //   console.log(this.dashArray);
-    // }
-    // );
-
-    // this.dashArray = this.dashboardService.setDboards();
-    // this.dashArray = this.dashboardService.getDashboards();
 
     this.dashboardChangedSub =
       this.dashboardService.dashboardsChanged.subscribe(
@@ -68,12 +51,6 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // These were breaking the app on logout.  Are these REALLY needed?
-    // this.dashboardChangedSub.unsubscribe();
-    // this.deletedDashboardSub.unsubscribe();
-    // this.selectedDashboardSub.unsubscribe();
-    // this.cancelDashboardSub.unsubscribe();
-    // this.messageClearedSub.unsubscribe();
   }
 
   onAddDashboard() {
