@@ -12,8 +12,10 @@ import { Subject } from 'rxjs';
 import { HTTPService } from './http.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
 import { HttpClient } from '@angular/common/http';
+
 import { report } from 'process';
 import { map, tap } from 'rxjs/operators'
+
 
 @Injectable({
   providedIn: 'root',
@@ -246,7 +248,8 @@ export class DashboardService {
 
   addDashboard = new Subject<void>();
 
-  constructor(private httpService: HTTPService, private http: HttpClient) {}
+
+  constructor(private httpService: HTTPService) {}
 
   createDashboard(dashData: string) {
     this.httpService.createCustomDashboard(dashData);
@@ -329,5 +332,17 @@ export class DashboardService {
       this.dashboardsChanged.next(this.dashboards);
     }
     );
+
+  // getCustomDashboards() {
+  //   return this.http.get<Dashboard[]>('http://localhost:3000/api/v1/custom_dashboards/index').subscribe(res => {
+  //     console.log(res)
+  //     // this.setDashboards(res)
+  //   })
+  // }
+
+  // setDashboards(res: Dashboard[]) {
+  //   this.dashboards = res;
+  //   this.dashboardsChanged.next(this.dashboards.slice());
+
   }
 }
