@@ -11,6 +11,7 @@ import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model'
 import { Subject } from 'rxjs';
 import { HTTPService } from './http.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,9 @@ export class DashboardService {
   currDashIdx: number;
   totalSalesArray = [];
   totalQtyArray = [];
-  // private dashboards: Dashboard[];
+  testUrl = 'http://localhost:3000/api/v1/';
+  reportData: any;
+  dashboards: Dashboard[];
 
   private salesmen: Salesman[] = [
     // {
@@ -114,217 +117,243 @@ export class DashboardService {
     //   region: "East"
     // },
     {
-      name: "Tony Stark",
+      name: 'Tony Stark',
       qty_wire: 9000,
-      part_number: "14NO35",
+      part_number: '14NO35',
       dollar_amount_sold: 0.13031,
-      region: "West"
-  },
-  {
-      name: "Luke Skywalker",
+      region: 'West',
+    },
+    {
+      name: 'Luke Skywalker',
       qty_wire: 4000,
-      part_number: "14NO35",
+      part_number: '14NO35',
       dollar_amount_sold: 0.13031,
-      region: "West"
-  },
-  {
-      name: "Leia Skywalker",
+      region: 'West',
+    },
+    {
+      name: 'Leia Skywalker',
       qty_wire: 15000,
-      part_number: "14NO35",
+      part_number: '14NO35',
       dollar_amount_sold: 0.13031,
-      region: "West"
-  },
-  {
-      name: "James Kirk",
+      region: 'West',
+    },
+    {
+      name: 'James Kirk',
       qty_wire: 5000,
-      part_number: "14NO35",
+      part_number: '14NO35',
       dollar_amount_sold: 0.13031,
-      region: "West"
-    }
-  ]
+      region: 'West',
+    },
+  ];
 
   private dashboardItems: DashboardItem[] = [
-    {name: "James Kirk",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-      name: "James Kirk",
-      qty_wire: 5000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-    },
-    {name: "Luke Skywalker",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-      name: "Luke Skywalker",
-      qty_wire: 4000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-    },
     {
-      name: "Tony Stark",
+      name: 'James Kirk',
       size: 1,
       display_type: 1,
-      salesman: [{
-        name: "Tony Stark",
-        qty_wire: 9000,
-        part_number: "14NO35",
-        dollar_amount_sold: 0.13031,
-        region: "West"
-    }]
+      salesman: [
+        {
+          name: 'James Kirk',
+          qty_wire: 5000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+      ],
     },
     {
-      name: "Leia Skywalker",
+      name: 'Luke Skywalker',
       size: 1,
       display_type: 1,
-      salesman: [{
-        name: "Leia Skywalker",
-        qty_wire: 15000,
-        part_number: "14NO35",
-        dollar_amount_sold: 0.13031,
-        region: "West"
-    }]
+      salesman: [
+        {
+          name: 'Luke Skywalker',
+          qty_wire: 4000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+      ],
     },
-    {name: "Western Sales",
-    size: 3,
-    display_type: 2,
-    salesman: [{
-      name: "Leia Skywalker",
-      qty_wire: 15000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-  },
-  {
-    name: "Tony Stark",
-    qty_wire: 9000,
-    part_number: "14NO35",
-    dollar_amount_sold: 0.13031,
-    region: "West"
-  },
-  {
-    name: "Luke Skywalker",
-    qty_wire: 4000,
-    part_number: "14NO35",
-    dollar_amount_sold: 0.13031,
-    region: "West"
-  },
-  {
-    name: "James Kirk",
-    qty_wire: 5000,
-    part_number: "14NO35",
-    dollar_amount_sold: 0.13031,
-    region: "West"
-  }]
-  }]
+    {
+      name: 'Tony Stark',
+      size: 1,
+      display_type: 1,
+      salesman: [
+        {
+          name: 'Tony Stark',
+          qty_wire: 9000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+      ],
+    },
+    {
+      name: 'Leia Skywalker',
+      size: 1,
+      display_type: 1,
+      salesman: [
+        {
+          name: 'Leia Skywalker',
+          qty_wire: 15000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+      ],
+    },
+    {
+      name: 'Western Sales',
+      size: 3,
+      display_type: 2,
+      salesman: [
+        {
+          name: 'Leia Skywalker',
+          qty_wire: 15000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+        {
+          name: 'Tony Stark',
+          qty_wire: 9000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+        {
+          name: 'Luke Skywalker',
+          qty_wire: 4000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+        {
+          name: 'James Kirk',
+          qty_wire: 5000,
+          part_number: '14NO35',
+          dollar_amount_sold: 0.13031,
+          region: 'West',
+        },
+      ],
+    },
+  ];
 
-private dashboards: Dashboard[] = [
-  {name: "Sales 1", items:
-  [
-  // item one
-  {
-    name: "James Kirk",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-      name: "James Kirk",
-      qty_wire: 5000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-  },
-  // item 2
-  {
-    name: "Luke Skywalker",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-    name: "Luke Skywalker",
-    qty_wire: 4000,
-    part_number: "14NO35",
-    dollar_amount_sold: 0.13031,
-    region: "West"
-  }]
-  },
-  // item 3
-  {
-    name: "Tony Stark",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-      name: "Tony Stark",
-      qty_wire: 9000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-  },
-  // item 4
-  {
-    name: "Leia Skywalker",
-    size: 1,
-    display_type: 1,
-    salesman: [{
-      name: "Leia Skywalker",
-      qty_wire: 15000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-  },
-  // item 5
-  {
-    name: "Western Sales",
-    size: 3,
-    display_type: 2,
-    salesman: [{
-      name: "Leia Skywalker",
-      qty_wire: 15000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    },
-    {
-      name: "Tony Stark",
-      qty_wire: 9000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    },
-    {
-      name: "Luke Skywalker",
-      qty_wire: 4000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    },
-    {
-      name: "James Kirk",
-      qty_wire: 5000,
-      part_number: "14NO35",
-      dollar_amount_sold: 0.13031,
-      region: "West"
-    }]
-  }]
-}]
+  // private dashboards: Dashboard[] = [
+  //   {
+  //     name: 'Sales 1',
+  //     items: [
+  //       // item one
+  //       {
+  //         name: 'James Kirk',
+  //         size: 1,
+  //         display_type: 1,
+  //         salesman: [
+  //           {
+  //             name: 'James Kirk',
+  //             qty_wire: 5000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //         ],
+  //       },
+  //       // item 2
+  //       {
+  //         name: 'Luke Skywalker',
+  //         size: 1,
+  //         display_type: 1,
+  //         salesman: [
+  //           {
+  //             name: 'Luke Skywalker',
+  //             qty_wire: 4000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //         ],
+  //       },
+  //       // item 3
+  //       {
+  //         name: 'Tony Stark',
+  //         size: 1,
+  //         display_type: 1,
+  //         salesman: [
+  //           {
+  //             name: 'Tony Stark',
+  //             qty_wire: 9000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //         ],
+  //       },
+  //       // item 4
+  //       {
+  //         name: 'Leia Skywalker',
+  //         size: 1,
+  //         display_type: 1,
+  //         salesman: [
+  //           {
+  //             name: 'Leia Skywalker',
+  //             qty_wire: 15000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //         ],
+  //       },
+  //       // item 5
+  //       {
+  //         name: 'Western Sales',
+  //         size: 3,
+  //         display_type: 2,
+  //         salesman: [
+  //           {
+  //             name: 'Leia Skywalker',
+  //             qty_wire: 15000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //           {
+  //             name: 'Tony Stark',
+  //             qty_wire: 9000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //           {
+  //             name: 'Luke Skywalker',
+  //             qty_wire: 4000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //           {
+  //             name: 'James Kirk',
+  //             qty_wire: 5000,
+  //             part_number: '14NO35',
+  //             dollar_amount_sold: 0.13031,
+  //             region: 'West',
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // ];
 
   addDashboard = new Subject<void>();
 
-  constructor(private httpService: HTTPService) {}
+  constructor(private httpService: HTTPService, private http: HttpClient) {}
 
   createDashboard(dashData: string) {
     this.httpService.createCustomDashboard(dashData);
   }
 
-  setDboards(dashboards) {
-   this.dashboards = dashboards;
-   this.dashboardsChanged.next(this.dashboards.slice());
+  setDboards() {
+    this.dashboardsChanged.next(this.dashboards);
   }
 
   getDashNames(index: number) {
@@ -343,9 +372,9 @@ private dashboards: Dashboard[] = [
     return this.dashboardItems[index];
   }
 
-  getDashboards(): Dashboard[] {
-    return this.dashboards.slice();
-  }
+  // getDashboards(): Dashboard[] {
+  //   return this.dashboards.slice();
+  // }
 
   deleteDashboard(index: number) {
     if (index !== -1) {
@@ -359,9 +388,9 @@ private dashboards: Dashboard[] = [
     return this.dashboards[index].name;
   }
 
-  getDashboard(index: number) {
-    return this.dashboards.slice()[index];
-  }
+  // getDashboard(index: number) {
+  //   return this.dashboards.slice()[index];
+  // }
 
   getDashItem(index: number) {
     return this.dashboardItems[index];
@@ -375,7 +404,7 @@ private dashboards: Dashboard[] = [
     this.dashboards[this.currDashIdx].items.splice(currItemIdx, 1);
   }
 
-    // createDashboard(name: string) {
+  // createDashboard(name: string) {
   //   const newDash: Dashboard = {
   //     name: name,
   //     items: [],
@@ -383,4 +412,26 @@ private dashboards: Dashboard[] = [
   //   this.dashboards.push(newDash);
   //   this.dashboardsChanged.next(this.dashboards.slice());
   // }
+
+  getCustomDashboards() {
+    return this.http
+      .get(`${this.testUrl}custom_dashboards/index`)
+      .subscribe((res) => {
+        this.reportData = res;
+        this.dashboards = this.reportData.payload.map((x: any) => {
+          const dashboard = x;
+          const newDash = new Dashboard(
+            dashboard.name,
+            dashboard.items.forEach((DashboardItem) => {
+              const newDashItem = new DashboardItem(
+                DashboardItem.name,
+                DashboardItem.size,
+                DashboardItem.display_type
+              );
+            })
+          );
+        });
+        console.log(this.dashboards);
+      });
+  }
 }

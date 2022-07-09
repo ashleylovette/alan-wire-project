@@ -1,61 +1,63 @@
-import { registerLocaleData } from "@angular/common";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { exhaustMap, map, take, tap } from "rxjs/operators";
-import { AuthService } from "../auth/auth.service";
+import { registerLocaleData } from '@angular/common';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { exhaustMap, map, take, tap } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
-import { Dashboard } from "../main-grid/dashboard.model";
-import { DashboardService } from "./dashboard.service";
+import { Dashboard } from '../main-grid/dashboard.model';
+import { DashboardService } from './dashboard.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class HTTPService {
-  testUrl = 'http://localhost:3000/api/v1/'
+  testUrl = 'http://localhost:3000/api/v1/';
+  reportData: any;
+  dashboards: Dashboard[];
 
-
-
-  constructor(private http: HttpClient,
-              private authService: AuthService,
-              private dashboardService: DashboardService) {}
-
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private dashboardService: DashboardService
+  ) {}
 
   // Custom Dashboard Requests
-    // create
+  // create
   createCustomDashboard(name: any) {
-    console.log("name", name)
-    const dashData: Dashboard = {name: name}
-    this.http.post<{ name: string }>(
-      this.testUrl + 'custom_dashboards',
-      dashData
-    )
-
-    .subscribe(resData => {
-      console.log(resData)
-    });
-    console.log('dashData', dashData)
-  }
-    //read
-  getCustomDashboards() {
+    console.log('name', name);
+    const dashData: Dashboard = { name: name };
     this.http
-    .get<Dashboard[]>(this.testUrl + 'custom_dashboards/index')
-    .subscribe(dashboards => {
-      console.log(this.dashboardService)
+      .post<{ name: string }>(this.testUrl + 'custom_dashboards', dashData)
 
-      this.dashboardService.setDboards(dashboards);
-    });
+      .subscribe((resData) => {
+        console.log(resData);
+      });
+    console.log('dashData', dashData);
   }
+  //read
+  // getCustomDashboards() {
+  //   this.http
+  //     .get(this.testUrl + 'custom_dashboards/index')
+  //     .subscribe((dashboards) => {
+  //       console.log('here', dashboards);
+  //       console.log(this.dashboardService);
+  //       this.dashboardService.tryAgain(dashboards);
+  //     });
+  // }
 
-    //update
+  // getCustomDashboards() {
+  //   return this.http
+  //     .get(`${this.testUrl}custom_dashboards/index`)
+  //     .subscribe((res) => {
+  //       this.reportData = res;
+  //       console.log(this.reportData);
+  //       this.dashboards = this.reportData.payload.map((x) => new Dashboard(x));
+  //     });
+  // }
 
+  //update
 
-    //destroy
-
-
-
+  //destroy
 
   // Dashboard Item Requests
 
-
-
   //Salesman Requests?
-
 }

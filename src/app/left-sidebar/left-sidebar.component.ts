@@ -20,31 +20,39 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   dashWasDeleted: boolean = false;
   messageClearedSub: Subscription;
 
-  constructor(private dashboardService: DashboardService,
-              private httpService: HTTPService) {}
+  constructor(
+    private dashboardService: DashboardService,
+    private httpService: HTTPService
+  ) {}
 
   ngOnInit(): void {
-    this.httpService.getCustomDashboards();
+    this.dashboardService.getCustomDashboards();
+    // this.dashArray = this.dashboardService.setDboards();
+    // this.dashArray = this.dashboardService.getDashboards();
 
-    this.dashArray = this.dashboardService.getDashboards();
-
-    this.dashboardChangedSub = this.dashboardService.dashboardsChanged.subscribe(
-      (dashboards: Dashboard[]) => {
+    this.dashboardChangedSub =
+      this.dashboardService.dashboardsChanged.subscribe(
+        (dashboards: Dashboard[]) => {
           this.dashArray = dashboards;
-        });
-    this.cancelDashboardSub = this.dashboardService.cancelDelete.subscribe(() => {
-      this.confirmed = true;
-      this.dashWasDeleted = false;
-    });
-    this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(() => {
-      this.confirmed = true;
-      this.dashWasDeleted = true;
-    });
+          console.log(this.dashArray);
+        }
+      );
+    this.cancelDashboardSub = this.dashboardService.cancelDelete.subscribe(
+      () => {
+        this.confirmed = true;
+        this.dashWasDeleted = false;
+      }
+    );
+    this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(
+      () => {
+        this.confirmed = true;
+        this.dashWasDeleted = true;
+      }
+    );
   }
 
   ngOnDestroy(): void {
     // These were breaking the app on logout.  Are these REALLY needed?
-
     // this.dashboardChangedSub.unsubscribe();
     // this.deletedDashboardSub.unsubscribe();
     // this.selectedDashboardSub.unsubscribe();
@@ -65,5 +73,4 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
     this.dashboardService.currDashIdx = index;
     this.index = index;
   }
-
 }

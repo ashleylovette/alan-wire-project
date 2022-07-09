@@ -4,7 +4,7 @@ export class Dashboard {
   public name: string;
   public items?: DashboardItem[];
 
-  constructor(name: string, user_id: number, items?: []) {
+  constructor(name: string, items?: []) {
     this.name = name;
     this.items = items;
   }
