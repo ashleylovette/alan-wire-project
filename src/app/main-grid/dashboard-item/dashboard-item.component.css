@@ -38,3 +38,8 @@ img {
 .card-text {
   padding: 0.5rem;
 }
+
+.delete {
+  margin-left: auto;
+  margin-top: .5rem;
+}
