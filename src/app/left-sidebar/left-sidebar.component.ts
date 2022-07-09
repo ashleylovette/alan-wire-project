@@ -22,6 +22,7 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
+    this.dashboardService.getCustomDashboards();
     this.dashArray = this.dashboardService.getDashboards();
 
     this.dashboardChangedSub = this.dashboardService.dashboardsChanged.subscribe(

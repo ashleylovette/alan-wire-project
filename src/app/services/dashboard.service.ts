@@ -11,6 +11,7 @@ import { DashboardItem } from '../main-grid/dashboard-item/dashboard-item.model'
 import { Subject } from 'rxjs';
 import { DashboardItemService } from './dashboard-item.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -313,7 +314,7 @@ private dashboards: Dashboard[] = [
 
   addDashboard = new Subject<void>();
 
-  constructor(private dashboardItemService: DashboardItemService) {}
+  constructor(private dashboardItemService: DashboardItemService, private http: HttpClient) {}
 
   getDashNames(index: number) {
     return this.dashboards[index].name;
@@ -370,5 +371,17 @@ private dashboards: Dashboard[] = [
 
   deleteDashItem(currItemIdx: number) {
     this.dashboards[this.currDashIdx].items.splice(currItemIdx, 1);
+  }
+
+  getCustomDashboards() {
+    return this.http.get<Dashboard[]>('http://localhost:3000/api/v1/custom_dashboards/index').subscribe(res => {
+      console.log(res)
+      // this.setDashboards(res)
+    })
+  }
+
+  setDashboards(res: Dashboard[]) {
+    this.dashboards = res;
+    this.dashboardsChanged.next(this.dashboards.slice());
   }
 }
