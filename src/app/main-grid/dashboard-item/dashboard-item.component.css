@@ -1,40 +1,27 @@
-/*
-
-.head {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: var(--aw-blue);
-  align-items: center;
-}
-
-p {
-  margin-left: 1%;
-  font-size: large;
-  color: var(--text-color);
-}
-
-mat-icon {
-  color: var(--text-color);
-  cursor: pointer;
-  margin-right: 1%;
-  border: none;
-}
-
-mat-icon:hover {
-  color: #0088a9;
-}
-
-img {
-  height: 100%;
-  width: 100%;
-} */
 
 .card-header {
   background-color: rgb(235, 112, 112);
   color: white;
 }
+.card-body>div {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3,1fr);
+}
+.card-body>div :nth-child(n+3) {
+  text-align: right;
+}
 
 .card-text {
   padding: 0.5rem;
+}
+
+.heading {font-weight: bold;}
+
+.scale {
+  font-size: x-small;
+  color: gray;
+  display: block;
+  font-style: italic;
+  font-weight: normal;
+  padding: 0;
 }
