@@ -46,6 +46,7 @@ export class DashboardService {
     this.httpService.createCustomDashboard(dashData);
     this.dashboards = [];
     this.fetchCustomDashboards();
+    this.dashboardsChanged.next(this.dashboards)
   }
 
   setDboards() {
@@ -95,18 +96,11 @@ export class DashboardService {
     });
   }
 
-  updateDashboards() {
-    const dashId = this.currentDashId;
-    const dash = this.currentDashboard;
-    console.log('dashId', dashId);
-    console.log('dash', dash);
-    this.httpService.updateCustomDashboard(dashId, dash);
-  }
-
   updateDashboard(newDashName) {
-    console.log(this.currentDashId, 'NewDashName', newDashName, this.currentDashboard);
     this.httpService.updateDashboard(this.currentDashId, this.currentDashboard, newDashName);
+    this.dashboards = [];
     this.refreshDashboards();
+    this.dashboardsChanged.next(this.dashboards);
   }
 
   getDashboards() {
