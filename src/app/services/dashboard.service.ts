@@ -12,10 +12,7 @@ import { Subject } from 'rxjs';
 import { HTTPService } from './http.service';
 import { Salesman } from '../main-grid/dashboard-item/salesman.model';
 import { HttpClient } from '@angular/common/http';
-
-import { report } from 'process';
-import { map, tap } from 'rxjs/operators'
-
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -39,14 +36,13 @@ export class DashboardService {
   editMode: boolean = false;
   addDashboard = new Subject<void>();
 
-
   constructor(private httpService: HTTPService) {}
 
   createDashboard(dashData: string) {
     this.httpService.createCustomDashboard(dashData);
     this.dashboards = [];
     this.fetchCustomDashboards();
-    this.dashboardsChanged.next(this.dashboards)
+    this.dashboardsChanged.next(this.dashboards);
   }
 
   setDboards() {
@@ -54,9 +50,9 @@ export class DashboardService {
   }
 
   deleteDashboard() {
-    const id = this.currentDashId
+    const id = this.currentDashId;
     if (id !== -1) {
-      this.httpService.deleteCustomDashboard(id)
+      this.httpService.deleteCustomDashboard(id);
 
       this.dashboardsChanged.next(this.dashboards.slice());
     }
@@ -82,22 +78,22 @@ export class DashboardService {
 
   fetchCustomDashboards() {
     this.dashboards = [];
-    this.httpService.getCustomDashboards().subscribe(res => {
-      this.resData= res;
-      this.resData.payload.map(x => {
-        const newDash = new Dashboard(
-          x.id,
-          x.name,
-          x.dashboard_item
-        )
+    this.httpService.getCustomDashboards().subscribe((res) => {
+      this.resData = res;
+      this.resData.payload.map((x) => {
+        const newDash = new Dashboard(x.id, x.name, x.dashboard_item);
         this.dashboards.push(newDash);
-      })
+      });
       this.dashboardsChanged.next(this.dashboards);
     });
   }
 
   updateDashboard(newDashName) {
-    this.httpService.updateDashboard(this.currentDashId, this.currentDashboard, newDashName);
+    this.httpService.updateDashboard(
+      this.currentDashId,
+      this.currentDashboard,
+      newDashName
+    );
     this.dashboards = [];
     this.refreshDashboards();
     this.dashboardsChanged.next(this.dashboards);
