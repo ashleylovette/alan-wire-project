@@ -4,23 +4,18 @@
     <mat-icon class="delete" (click)="onDelete()">delete</mat-icon>
   </div>
   <div class="card-body">
-    <table>
-      <thead>
-        <th class="p-2">Name</th>
-        <th class="p-2">Part Number</th>
-        <th class="p-2">Qty Wire</th>
-        <th class="p-2">$ Amount Sold</th>
-      </thead>
-        <tbody>
-        <td class="p-2">{{dbItem.salesman_info.name}}</td>
-        <td class="p-2">{{ dbItem.salesman_info.part_number }}</td>
-        <td class="p-2">{{ dbItem.salesman_info.qty_wire }}</td>
-        <td class="p-2">
-          ${{ (dbItem.salesman_info.dollar_amount_sold * dbItem.salesman_info.qty_wire).toFixed(2) }}
-        </td>
-      </tbody>
-    </table>
-  </div>
+    <div id="information">
+      <span id="name" class="heading">Name</span>
+      <span id="pn" class="heading">Part No</span>
+      <span id="qty" class="heading">Feet<span class="scale">Thousands</span></span>
+      <span id="sold" class="heading">Total<span class="scale">Thousands</span></span>
+    </div>
+    <div>
+      <span>{{ dbItem.salesman_info.name }}</span>
+      <span>{{ dbItem.salesman_info.part_number }}</span>
+      <span>{{ (dbItem.salesman_info.qty_wire).toLocaleString('en-US') }}</span>
+      <span>${{ (dbItem.salesman_info.dollar_amount_sold * dbItem.salesman_info.qty_wire).toLocaleString('en-US',{maximumFractionDigits: 0}) }}</span>
+    </div>
 </div>
 
 <div class="card" *ngIf="dbItem.display_type == 2">
