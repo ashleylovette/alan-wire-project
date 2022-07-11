@@ -10,6 +10,7 @@ import { DashboardService } from '../services/dashboard.service';
 export class DashboardFormComponent implements OnInit {
   dashboardForm: FormGroup;
   dashboardAdded: boolean = false;
+  isEditMode: boolean = false;
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -17,14 +18,24 @@ export class DashboardFormComponent implements OnInit {
     this.dashboardForm = new FormGroup({
       dashName: new FormControl(null)
     });
-
+    this.isEditMode = this.dashboardService.editMode;
+    // console.log(this.isEditMode)
   }
 
   onFormSubmit() {
     this.dashboardAdded = true;
-    const dashName = this.dashboardForm.get('dashName').value;
-    console.log('submitName', dashName)
-    this.dashboardService.createDashboard(dashName);
+
+    if(!this.isEditMode) {
+      const dashName = this.dashboardForm.get('dashName').value;
+      console.log('submitName', dashName)
+      this.dashboardService.createDashboard(dashName);
+    } else if (this.isEditMode) {
+      const dashName = this.dashboardForm.get('dashName').value;
+      this.dashboardService.updateDashboard(dashName);
+      this.dashboardService.dashboards = [];
+    } else {
+      return
+    }
 
     this.dashboardForm.reset();
   }
@@ -32,6 +43,7 @@ export class DashboardFormComponent implements OnInit {
   onCancel() {
     this.dashboardForm.reset();
     this.dashboardService.addDashboard.next();
+    this.dashboardService.editMode = false;
   }
 
 }

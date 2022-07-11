@@ -20,28 +20,26 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
   confirmed: boolean = true;
   dashWasDeleted: boolean = false;
   messageClearedSub: Subscription;
-  // resData: any;
 
   constructor(
-    private dashboardService: DashboardService,
-  ) {}
+    private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     this.dashboardService.fetchCustomDashboards();
 
-    this.dashboardChangedSub =
-      this.dashboardService.dashboardsChanged.subscribe(
-        (dashboards: Dashboard[]) => {
-          this.dashArray = dashboards;
-          console.log(this.dashArray);
-        }
-      );
+    this.dashboardService.dashboardsChanged.subscribe(
+      (dashboards: Dashboard[]) => {
+        this.dashArray = dashboards;
+      }
+    );
+
     this.cancelDashboardSub = this.dashboardService.cancelDelete.subscribe(
       () => {
         this.confirmed = true;
         this.dashWasDeleted = false;
       }
     );
+
     this.deletedDashboardSub = this.dashboardService.dashboardDeleted.subscribe(
       () => {
         this.confirmed = true;
@@ -63,8 +61,14 @@ export class LeftSidebarComponent implements OnInit, OnDestroy {
 
   onDashboardSelected(dashboard: Dashboard, index: number) {
     this.dashboardService.dashboardSelected.next(dashboard);
+    this.dashboardService.currentDashboard = dashboard;
     this.dashboardService.currDashIdx = index;
     this.index = index;
     this.dashboardService.currentDashId = dashboard.id;
+  }
+
+  onEditDashboard() {
+    this.dashboardService.addDashboard.next();
+    this.dashboardService.editMode = true;
   }
 }

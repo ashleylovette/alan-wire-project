@@ -11,12 +11,12 @@
         <th class="p-2">Qty Wire</th>
         <th class="p-2">$ Amount Sold</th>
       </thead>
-      <tbody *ngFor="let salesman of dbItem.salesman" class="p-2">
-        <td class="p-2">{{ salesman.name }}</td>
-        <td class="p-2">{{ salesman.part_number }}</td>
-        <td class="p-2">{{ salesman.qty_wire }}</td>
+        <tbody>
+        <td class="p-2">{{dbItem.salesman_info.name}}</td>
+        <td class="p-2">{{ dbItem.salesman_info.part_number }}</td>
+        <td class="p-2">{{ dbItem.salesman_info.qty_wire }}</td>
         <td class="p-2">
-          ${{ (salesman.dollar_amount_sold * salesman.qty_wire).toFixed(2) }}
+          ${{ (dbItem.salesman_info.dollar_amount_sold * dbItem.salesman_info.qty_wire).toFixed(2) }}
         </td>
       </tbody>
     </table>

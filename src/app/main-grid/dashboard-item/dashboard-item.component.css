@@ -30,6 +30,10 @@ img {
   width: 100%;
 } */
 
+.card {
+  z-index: 0.5;
+}
+
 .card-header {
   background-color: rgb(235, 112, 112);
   color: white;
@@ -42,4 +46,10 @@ img {
 .delete {
   margin-left: auto;
   margin-top: .5rem;
+  cursor: pointer;
+}
+
+.edit {
+  margin-top: .5rem;
+  cursor: pointer;
 }

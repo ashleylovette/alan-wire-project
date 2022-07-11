@@ -5,7 +5,7 @@
     *ngIf="!dashboardAdded"
   >
     <div class="form-group">
-      <label for="dashName" class="lead pb-2 form-items">New Dashboard:</label>
+      <label for="dashName" class="lead pb-2 form-items">{{isEditMode ? 'Edit Dashboard' : 'New Dashboard'}}</label>
       <input
         id="dashName"
         name="dashName"
@@ -21,14 +21,14 @@
       type="submit"
       [disabled]="!dashboardForm.valid"
     >
-      Create Dashboard
+      {{ isEditMode ? 'Update Dashboard' : 'Create Dashboard'}}
     </button>
     <button class="btn mt-3 form-items" type="button" (click)="onCancel()">
       Cancel
     </button>
   </form>
   <div *ngIf="dashboardAdded">
-    <h4 class="lead">Dashboard Created!</h4>
+    <h4 class="lead">{{ isEditMode ? 'Dashboard Updated' : 'Dashboard Created!'}}</h4>
     <button
       class="btn mt-3 form-items okay-button"
       type="button"
