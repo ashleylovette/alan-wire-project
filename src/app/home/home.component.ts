@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardItemService } from '../services/dashboard-item.service';
 import { DashboardService } from '../services/dashboard.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   showLeftColumn = true;
   showRightColumn = true;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService,
+              private dashItemService: DashboardItemService) {}
 
   ngOnInit(): void {
     this.dashboardService.addDashboard.subscribe(() => {
@@ -27,9 +29,11 @@ export class HomeComponent implements OnInit {
 
   handleLeftClick(event) {
     this.showLeftColumn = event;
+    this.dashboardService.refreshDashboards;
   }
   handleRightClick(event) {
     this.showRightColumn = event;
+    this.dashItemService.refreshDashItems;
   }
 
   // constructor(private dashboardService: DashboardService) {}

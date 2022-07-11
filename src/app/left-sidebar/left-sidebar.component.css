@@ -25,6 +25,12 @@ button.remove {
   border-radius: 8px;
 }
 
+button.edit {
+  color: var(--aw-blue);
+  background-color: var(--field-color);
+  border-radius: 8px;
+}
+
 /* CHANGE COLOR OF CONTENT LINKS ON HOVER */
 .left-sidebar a:hover {
   color: var(--highlight-text);

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { DashboardItem } from './dashboard-item.model';
+import { Salesman } from './salesman.model';
 
 @Component({
   selector: 'app-dashboard-item',
@@ -13,12 +14,17 @@ export class DashboardItemComponent implements OnInit {
     @Input() index: number;
     totalQty: number;
     totalDollar: number;
-    dashboardItems: any;
+    // dashboardItems: any;
+    dashboardItems: DashboardItem[]
+    salesman: Salesman[];
+    currentDashboardItem: DashboardItem;
 
   constructor(private dashService: DashboardService) {}
 
+
+
   ngOnInit() {
-    console.log(this.dbItem);
+    // ASHLEYS STUFF
     this.totalDollar = this.dashService.totalSalesArray.reduce((a, b) => {
       return a + b;
     }, 0).toFixed(2);

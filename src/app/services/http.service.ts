@@ -13,6 +13,7 @@ export class HTTPService {
   testUrl = 'http://localhost:3000/api/v1/';
   reportData: any;
   dashboards: Dashboard[];
+  currentDashboard: any;
 
   constructor(
     private http: HttpClient,
@@ -23,15 +24,15 @@ export class HTTPService {
   // Custom Dashboard Requests
   // create
   createCustomDashboard(name: any) {
-    console.log('name', name);
+    // console.log('name', name);
     const dashData: Dashboard = { name: name };
     this.http
-      .post<{ name: string }>(this.testUrl + 'custom_dashboards', dashData)
+      .post<{ name: string }>(`${this.testUrl}custom_dashboards`, dashData)
 
       .subscribe((resData) => {
         console.log(resData);
       });
-    console.log('dashData', dashData);
+    // console.log('dashData', dashData);
   }
 
   //read
@@ -41,17 +42,49 @@ export class HTTPService {
   }
 
   //update
-  updateCustomDashboard(selectedDashId) {
-    // return this.http.patch(`${this.testUrl}custom_dashboards/${selectedDashId}`)
+  updateCustomDashboard(currentId: number, currentDashboard: Dashboard) {
+    // console.log('id', currentId);
+    // console.log('dashboard', currentDashboard);
+    let currentDashId = currentId;
+    const name = currentDashboard.name;
+    const items = currentDashboard.items
+    let modifiedDashboard = {
+      name: name,
+      dashbaord_item: items
+    }
+
+    console.log(modifiedDashboard)
+    // console.log('currentDashId', currentDashId);
+    return this.http.put<Dashboard>(`${this.testUrl}custom_dashboards/${currentDashId}`, currentDashboard).subscribe((res) => {
+      console.log(res);
+    }
+    )
   }
+
+  updateDashboard(id, dashboard, dashName) {
+    this.currentDashboard = {
+      name: dashName,
+      items: dashboard.items,
+      id: id
+    }
+
+    return this.http.put(`${this.testUrl}custom_dashboards/${id}`, this.currentDashboard)
+    .subscribe(res => {
+      console.log(res);
+    })
+  }
+
   //destroy
   deleteCustomDashboard(index: number) {
     return this.http.delete(`${this.testUrl}custom_dashboards/${index}`)
     .subscribe((res) => {
-      console.log(res);
     })
   }
   // Dashboard Item Requests
+  // get
+  getDashboardItems() {
+    return this.http.get(`${this.testUrl}dashboard_items/index`)
+  }
 
   //Salesman Requests?
 }

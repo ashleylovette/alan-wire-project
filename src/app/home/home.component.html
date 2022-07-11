@@ -10,17 +10,17 @@
       }">
       <app-left-sidebar class="left-col" id="leftBar" *ngIf="showLeftColumn"></app-left-sidebar>
 
-      <app-dashboard-form
-        class="dashboard-form"
-        *ngIf="addDashboard"
-      ></app-dashboard-form>
 
       <div class="center-col">
         <app-toggle
-          (leftClick)="handleLeftClick($event)"
-          (rightClick)="handleRightClick($event)"
+        (leftClick)="handleLeftClick($event)"
+        (rightClick)="handleRightClick($event)"
         ></app-toggle>
         <app-main-grid></app-main-grid>
+        <app-dashboard-form
+        class="dashboard-form"
+        *ngIf="addDashboard"
+      ></app-dashboard-form>
       </div>
       <app-right-sidebar
         class="right-col"

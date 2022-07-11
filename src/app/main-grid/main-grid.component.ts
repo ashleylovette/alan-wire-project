@@ -3,6 +3,7 @@ import { DashboardItem } from './dashboard-item/dashboard-item.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dashboard } from './dashboard.model';
 import { Subscription } from 'rxjs';
+import { DashboardItemService } from '../services/dashboard-item.service';
 
 @Component({
   selector: 'app-main-grid',
@@ -21,7 +22,8 @@ export class MainGridComponent implements OnInit {
   exit: boolean = false;
   dashboardItems: any;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService,
+              private dashItemService: DashboardItemService) {}
 
   ngOnInit() {
     // Get selected dashboard on init
@@ -31,7 +33,6 @@ export class MainGridComponent implements OnInit {
         this.selectedDashboard = dashboard;
         this.dashBoardItems = dashboard.items;
         this.dashboardSelected = true;
-        console.log('selected dashboard', this.selectedDashboard)
       }
     );
 
@@ -51,22 +52,22 @@ export class MainGridComponent implements OnInit {
     });
 
     // getting total numbers for sales and qty by region, this will probably need to be revisited when we get live data
-    this.dashboardItems = this.dashboardService.getDashboardItems();
-    this.dashboardItems.map(x => {
-      if(x.salesman.length > 1) {
-        x.salesman.map(x => {
-          this.dashboardService.totalSalesArray.push(x.dollar_amount_sold * x.qty_wire)
-        })
-      }
-    })
+    this.dashboardItems = this.dashItemService.getDashboardItems();
+    // this.dashboardItems.map(x => {
+    //   if(x.salesman.length > 1) {
+    //     x.salesman.map(x => {
+    //       this.dashboardService.totalSalesArray.push(x.dollar_amount_sold * x.qty_wire)
+    //     })
+    //   }
+    // })
 
-    this.dashboardItems.map(x => {
-      if(x.salesman.length > 1) {
-        x.salesman.map(x => {
-          this.dashboardService.totalQtyArray.push(x.qty_wire)
-        })
-      }
-    })
+    // this.dashboardItems.map(x => {
+    //   if(x.salesman.length > 1) {
+    //     x.salesman.map(x => {
+    //       this.dashboardService.totalQtyArray.push(x.qty_wire)
+    //     })
+    //   }
+    // })
   }
 
   ngOnDestroy() {
